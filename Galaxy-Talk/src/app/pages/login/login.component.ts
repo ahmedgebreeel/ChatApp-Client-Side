@@ -16,7 +16,7 @@ export class LoginComponent {
 
  // #region for  loginValidation
   loginValidation = new FormGroup({
-    email : new FormControl(" " , Validators.required),
+    email : new FormControl("" , Validators.required),
     password : new FormControl("" , [Validators.required , Validators.minLength(8)])
   })
 
@@ -25,11 +25,15 @@ export class LoginComponent {
   }
 
   get PassValid (){
+
     return this.loginValidation.controls['password'].valid;
   }
 
   Add(){
+
     if(this.loginValidation.valid){
+      console.log("login successfully");
+      
     }else{
       alert("AGAIN")
     }

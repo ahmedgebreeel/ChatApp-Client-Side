@@ -12,7 +12,7 @@
         </div>
 
 
-        <form class="form mx-6" [formGroup]="loginValidation">
+        <form (submit)="Add()" class="form mx-6" [formGroup]="loginValidation">
           <div  class="form-group mx-5 mt-2">
             <input
               formControlName="email"
@@ -27,6 +27,7 @@
           }
           <div class="form-group mx-5 mt-5 flex content-center">
             <input
+              #ref
               formControlName="password"
               type="password"
               name="email"
@@ -54,7 +55,7 @@
             <label for="remember">Remember me</label>
           </div>
           <div class="mx-5 mt-5 form-group">
-            <input (click)="Add()" class=" bg-[#64A5FF] rounded text-xl font-bold text-white h-10 w-full transition ease-out-in delay-100 hover:-translate-y-1 hover:scale-103 hover:duration-100 ..." value="Log In" type="submit">
+            <input  class=" bg-[#64A5FF] rounded text-xl font-bold text-white h-10 w-full transition ease-out-in delay-100 hover:-translate-y-1 hover:scale-103 hover:duration-100 ..." value="Log In" type="submit">
           </div>
         </form>
         <div class="text-center mt-5 mb-5">
