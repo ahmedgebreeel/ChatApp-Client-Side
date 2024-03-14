@@ -30,7 +30,6 @@ export class LoginComponent {
   }
 
   Add(){
-
     if(this.loginValidation.valid){
       console.log("login successfully");
       

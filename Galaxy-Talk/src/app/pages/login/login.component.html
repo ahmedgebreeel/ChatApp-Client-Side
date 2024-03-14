@@ -15,6 +15,7 @@
         <form (submit)="Add()" class="form mx-6" [formGroup]="loginValidation">
           <div  class="form-group mx-5 mt-2">
             <input
+              #email  
               formControlName="email"
               type="email"
               name="email"
@@ -22,12 +23,12 @@
               class="form-control bg-white text-black focus focus:outline-none border-b-2 w-full h-10"
             />
           </div>
-          @if(!EmailValid){
+          @if(email.value && !EmailValid){
             <span class="ml-5 text-red-500 " >Email Required</span>
           }
           <div class="form-group mx-5 mt-5 flex content-center">
             <input
-              #ref
+              #password
               formControlName="password"
               type="password"
               name="email"
@@ -47,7 +48,7 @@
             ></i
           ></span>
           </div>
-          @if(!PassValid){
+          @if(password.value && !PassValid){
             <span class="ml-5 text-red-500 ">At least 8 characters</span>
           }
           <div class="mx-5 mt-3 ">
