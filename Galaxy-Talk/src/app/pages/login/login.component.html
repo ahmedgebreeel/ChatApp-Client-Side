@@ -1,39 +1,60 @@
-<section class="h-full py-14 bg-[#eee] flex justify-center content-center ">
-  <div class="w-9/12 h-full  bg-white rounded-3xl flex flex-row shadow-xl	box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);">
-    <div class="w-1/2 ">
+<section class="h-screen py-14  bg-[#eee] flex justify-center content-center ">
+
+  <div class="w-8/12 h-full  bg-white rounded-3xl flex flex-row shadow-xl	box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);">
+
+    <div class="lg:w-1/2 sm:w-full md:w-1/2 ">
         <div class="flex justify-center gap-1 mt-5">
           <h1 class="text-black text-2xl font-bold">GalaxyTalk</h1>
           <p class="text-black text-base pt-1">Chat Website</p>
         </div>
         <div class="ml-10">
-          <h2 class="text-xl font-bold text-black mt-20 mb-8">Log In</h2>
+          <h2 class="text-xl font-bold text-black lg:mt-20 lg:mb-8 md:mt-12 md:mb-5 sm:mt-12 sm:mb-5" >Log In</h2>
         </div>
 
 
-        <form class="mx-6">
-          <div  class="mx-5 mt-2">
+        <form class="form mx-6" [formGroup]="loginValidation">
+          <div  class="form-group mx-5 mt-2">
             <input
+              formControlName="email"
               type="email"
               name="email"
               placeholder="Email"
-              class="bg-white focus focus:outline-none border-b-2 w-full h-10"
+              class="form-control bg-white text-black focus focus:outline-none border-b-2 w-full h-10"
             />
           </div>
-
-          <div class="mx-5 mt-5">
+          @if(!EmailValid){
+            <span class="ml-5 text-red-500 " >Email Required</span>
+          }
+          <div class="form-group mx-5 mt-5 flex content-center">
             <input
+              formControlName="password"
               type="password"
               name="email"
               placeholder="Password"
-              class="bg-white focus:outline-none border-b-2 w-full h-10"
-            />
+              class="form-control bg-white text-black focus:outline-none border-b-2 w-full h-10"
+              [type]="changeType ? 'Password' : 'text'"
+            /><span
+            class="img fw-bold text-muted"
+            (click)="showPassword()"
+            ><i
+              class="relative right-3 top-3"
+              [ngClass]="
+                visible
+                  ? 'fa-solid fa-eye-slash'
+                  : 'fa-solid fa-eye'
+              "
+            ></i
+          ></span>
           </div>
-          <div class="mx-5 mt-3">
-            <input type="checkbox" id="remember" name="remember" value="remember" class="mr-2">
+          @if(!PassValid){
+            <span class="ml-5 text-red-500 ">At least 8 characters</span>
+          }
+          <div class="mx-5 mt-3 ">
+            <input type="checkbox" id="remember" name="remember" value="remember" class="mr-2 ">
             <label for="remember">Remember me</label>
           </div>
-          <div class="mx-5 mt-5">
-            <button class="bg-[#64A5FF] rounded text-white h-10 w-full ">Log In</button>
+          <div class="mx-5 mt-5 form-group">
+            <input (click)="Add()" class=" bg-[#64A5FF] rounded text-xl font-bold text-white h-10 w-full transition ease-out-in delay-100 hover:-translate-y-1 hover:scale-103 hover:duration-100 ..." value="Log In" type="submit">
           </div>
         </form>
         <div class="text-center mt-5 mb-5">
@@ -42,8 +63,8 @@
 
 
     </div>
-    <div class="w-1/2 relative  flex">
-      <img src="assets/pic3.jpg" class="h-full w-full rounded-3xl" alt="">
+    <div class="w-1/2 relative   hidden sm:hidden lg:block md:block">
+      <img src="assets/pic3.jpg" class="h-full w-full rounded-3xl " alt="">
     </div>
 
   </div>
