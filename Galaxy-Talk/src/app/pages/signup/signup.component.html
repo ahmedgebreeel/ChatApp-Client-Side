@@ -1,52 +1,52 @@
 <style>
 .underline-textarea {
-
-    border: none; 
-    border-bottom: 0.5px solid rgb(147, 144, 144); 
-    resize: none; 
-    width: 80%; 
-    padding: 8px 0; 
-    font-size: 15px; 
+    border: none;
+    border-bottom: 0.5px solid rgb(147, 144, 144);
+    resize: none;
+    width: 80%;
+    padding: 8px 0;
+    font-size: 15px;
     font-family: Arial, sans-serif;
-    background-color: transparent; 
-    margin-right: 80px;  
-    color: #0000;
-    padding-bottom: 0px; 
-
-     
+    background-color: transparent;
+    margin-right: 80px;
+    color: #000; 
+    padding-bottom: 0px;
 }
+
 .login-link {
-    color: #64A5FF; 
-  }
-  .fa-google{
+    color: #64A5FF;
+}
+
+.fa-google {
     color: rgb(255, 81, 0);
-  }
-  .fa-facebook{
+}
+
+.fa-facebook {
     color: blue;
-    
-  }
-  .txt-btn p{
+}
+
+.txt-btn p {
     color: #0000;
     font-family: Yinmar;
     font-size: 13.98px;
-  }
-  
+}
 
-  .eye-icon {
-    position: absolute;
-    top: 63%;
-    right: 185px;
+.eye-icon {
+    position: relative;
+    bottom: 12px;
+    left: 80%;
     transform: translateY(-50%);
-  }
+}
+.error-message {
+    color: red;
+}
 
 
 </style>
 
 
-
-
-  <div class="min-h-screen py-24 bg-gray-200">
-    <div class="container mx-auto" style="margin-top: -80px;">
+   <div class="h-screen py-[3%] bg-gray-200 overflow-auto md:overflow-hidden ">
+    <div class="w-9/12 mx-auto" >
       <div class="flex flex-col md:flex-row bg-white rounded-xl shadow-lg overflow-hidden">
         <div class="w-full md:w-1/2">
           <img src="assets/pic1.jpg" alt="Placeholder Image">
@@ -54,43 +54,54 @@
         <div class="w-full md:w-1/2 px-6 py-8">
           <h2 class="text-black text-2xl font-bold ml-4  mt-4 md:mt-0 mb-4 md:mb-8" style="font-family: Alef">Create Account</h2>
   
-          <div class="flex flex-col md:flex-row justify-center mb-8">
-            <button class="btn flex items-center mr-3 mb-4 md:mb-0 bg-white rounded-md border border-gray-400">
+          <div class="flex flex-col md:flex-row justify-center mb-8 md:mr-14">
+            <button class="btn mr-5 mb-4 md:mb-0 bg-white rounded-md border border-gray-400">
               <i class="fa-brands fa-google"></i>
               <p class="ml-3 txt-btn"> Sign up with Google </p>
             </button>
-            <button class="btn flex items-center bg-white rounded-md border border-gray-400">
+            <button class="btn bg-white rounded-md border border-gray-400">
               <i class="fa-brands fa-facebook"></i>
               <p class="ml-2 txt-btn"> Sign up with Facebook </p>
             </button>
           </div>
   
-          <p class="ml-40 md:ml-52 mt-5 mb-5"> - OR - </p>
-
   
-          <textarea class="underline-textarea mb-4 ml-5" placeholder="Full Name"></textarea>
-          <textarea class="underline-textarea mb-4 ml-5"  placeholder="Email Address"></textarea>
-
-
-          <div class="position-relative mb-4">
-            <textarea class="underline-textarea ml-5" placeholder="Password"></textarea>
-            <i class="fa-solid fa-eye-slash eye-icon hidden md:block  absolute top-3/4 md:top-63% md:mt-0 mt-2 right-5 md:right-185px"></i>
-          </div>
+          <p class="ml-40 md:ml-56 mt-5 mb-5"> - OR - </p>
+          <form class="form" #form="ngForm" (ngSubmit)="Add()">
+            <input ngModel name="name" #name="ngModel" type="text" class="form-control underline-textarea mb-4 ml-5" placeholder="Full Name" required>
+            <div *ngIf="name.errors && (name.dirty || name.touched)">
+                <div *ngIf="name.errors['required']">
+                    <p class="error-message">Name is required</p>
+                </div>
+                <div *ngIf="name.errors['minlength']">
+                    <p class="error-message">Name must be at least 3 characters long</p>
+                </div>
+            </div>
+        
+            <input ngModel name="email" #email="ngModel" type="email" class="form-control underline-textarea mb-4 ml-5" placeholder="Email Address" required email>
+            <div *ngIf="email.errors && (email.dirty || email.touched)">
+                <div *ngIf="email.errors['required']">
+                    <p class="error-message">Email is required</p>
+                </div>
+                <div *ngIf="email.errors['email']">
+                    <p class="error-message">Invalid email format</p>
+                </div>
+            </div>
+        
+            <input ngModel name="password" #password="ngModel" type="password" class="form-control underline-textarea ml-5" placeholder="Password" required minlength="5">
+            <div *ngIf="password.errors && (password.dirty || password.touched)">
+                <div *ngIf="password.errors['required']">
+                    <p class="error-message">Password is required</p>
+                </div>
+                <div *ngIf="password.errors['minlength']">
+                    <p class="error-message">Password must be at least 8 characters long</p>
+                </div>
+            </div>
+        
+            <button type="submit" class="btn mt-11 font-alef w-full md:w-96 md:ml-16 ml-0 md:mr-64 md:w-400px bg-blue-500 text-white mb-4 border-none">Create Account</button>
+        </form>
+        
           
+          <p class="ml-14 md:ml-32 md:mr-36 mt-5 md:mt-0">Already have an account?<span class="login-link ml-1"> <a routerLink="/login">Log in</a> </span></p>
+          <p class="ml-36 md:ml-52 md:mr-52 mt-6 md:mt-5 text-black font-bold font-urbasnit">GalaxyTalk</p>
           
-          
-  
-          <button class="btn font-alef w-full md:w-96 md:ml-2 ml-0 md:w-400px bg-blue-500 text-white mb-4 border-none">Create Account</button>
-
-  
-          <p class="ml-20 mt-5">Already have an account?<span class="login-link ml-1"> <a routerLink="/login">Log in</a> </span></p>
-          
-          <p class="ml-40 mt-3 text-black font-bold font-urbasnit">GalaxyTalk</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-
-  
-  

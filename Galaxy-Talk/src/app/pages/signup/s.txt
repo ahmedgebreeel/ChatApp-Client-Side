@@ -1,0 +1,189 @@
+  <div class="min-h-screen py-24 bg-gray-200 overflow-auto md:overflow-hidden">
+    <div class="container mx-auto" style="margin-top: -80px;">
+      <div class="flex flex-col md:flex-row bg-white rounded-xl shadow-lg overflow-hidden">
+        <div class="w-full md:w-1/2">
+          <img src="assets/pic1.jpg" alt="Placeholder Image">
+        </div>
+        <div class="w-full md:w-1/2 px-6 py-8">
+          <h2 class="text-black text-2xl font-bold ml-4  mt-4 md:mt-0 mb-4 md:mb-8" style="font-family: Alef">Create Account</h2>
+  
+          <div class="flex flex-col md:flex-row justify-center mb-8 md:mr-14">
+            <button class="btn mr-5 mb-4 md:mb-0 bg-white rounded-md border border-gray-400">
+              <i class="fa-brands fa-google"></i>
+              <p class="ml-3 txt-btn"> Sign up with Google </p>
+            </button>
+            <button class="btn bg-white rounded-md border border-gray-400">
+              <i class="fa-brands fa-facebook"></i>
+              <p class="ml-2 txt-btn"> Sign up with Facebook </p>
+            </button>
+          </div>
+          
+  
+          <p class="ml-40 md:ml-56 mt-5 mb-5"> - OR - </p>
+
+         <form >
+          <input  type="text" [(ngModel)]="userObj.name" class="form-control" class="underline-textarea mb-4 ml-5" placeholder="Full Name">
+
+          <input  type="email"[(ngModel)]="userObj.email" class="underline-textarea mb-4 ml-5"  placeholder="Email Address">
+
+
+          <div class="position-relative mb-4">
+            <input  [(ngModel)]="userObj.password" class="underline-textarea ml-5" placeholder="Password">
+            <i class="fa-solid fa-eye-slash eye-icon hidden md:block  absolute top-3/4 md:top-63% md:mt-0 mt-2 right-5 md:right-185px"></i>
+          </div>
+          
+          
+          
+  
+          <button (click)="validation()" class="btn mt-11 font-alef w-full md:w-96 md:ml-16 ml-0 md:mr-64 md:w-400px bg-blue-500 text-white mb-4 border-none">Create Account</button>
+
+  </form>
+          <p class="ml-14 md:ml-32 md:mr-36 mt-5 md:mt-0">Already have an account?<span class="login-link ml-1"> <a routerLink="/login">Log in</a> </span></p>
+
+<p class="ml-36 md:ml-52 md:mr-52 mt-6 md:mt-5 text-black font-bold font-urbasnit">GalaxyTalk</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  //////////
+  <style>
+.underline-textarea {
+
+    border: none; 
+    border-bottom: 0.5px solid rgb(147, 144, 144); 
+    resize: none; 
+    width: 80%; 
+    padding: 8px 0; 
+    font-size: 15px; 
+    font-family: Arial, sans-serif;
+    background-color: transparent; 
+    margin-right: 80px;  
+    color: #0000;
+    padding-bottom: 0px; 
+
+     
+}
+.login-link {
+    color: #64A5FF; 
+  }
+  .fa-google{
+    color: rgb(255, 81, 0);
+  }
+  .fa-facebook{
+    color: blue;
+    
+  }
+  .txt-btn p{
+    color: #0000;
+    font-family: Yinmar;
+    font-size: 13.98px;
+  }
+  
+
+  .eye-icon {
+    position: absolute;
+    top: 42%;
+    right: 210px;
+    transform: translateY(-50%);
+  }
+
+
+</style>
+
+
+
+
+  <div class="min-h-screen py-24 bg-gray-200 overflow-auto md:overflow-hidden">
+    <div class="container mx-auto" style="margin-top: -80px;">
+      <div class="flex flex-col md:flex-row bg-white rounded-xl shadow-lg overflow-hidden">
+        <div class="w-full md:w-1/2">
+          <img src="assets/pic1.jpg" alt="Placeholder Image">
+        </div>
+        <div class="w-full md:w-1/2 px-6 py-8">
+          <h2 class="text-black text-2xl font-bold ml-4  mt-4 md:mt-0 mb-4 md:mb-8" style="font-family: Alef">Create Account</h2>
+  
+          <div class="flex flex-col md:flex-row justify-center mb-8 md:mr-14">
+            <button class="btn mr-5 mb-4 md:mb-0 bg-white rounded-md border border-gray-400">
+              <i class="fa-brands fa-google"></i>
+              <p class="ml-3 txt-btn"> Sign up with Google </p>
+            </button>
+            <button class="btn bg-white rounded-md border border-gray-400">
+              <i class="fa-brands fa-facebook"></i>
+              <p class="ml-2 txt-btn"> Sign up with Facebook </p>
+            </button>
+          </div>
+          
+  
+          <p class="ml-40 md:ml-56 mt-5 mb-5"> - OR - </p>
+          <form [formGroup]="signupForm" (ngSubmit)="validation()">
+            <input formControlName="name" type="text" class="underline-textarea mb-4 ml-5" placeholder="Full Name">
+            <div *ngIf="signupForm.controls['name'].invalid && (signupForm.controls['name'].dirty || signupForm.controls['name'].touched)">
+              <div *ngIf="signupForm.controls['name'].errors.required" class="text-danger">Name is required</div>
+            </div>
+          
+            <input formControlName="email" type="email" class="underline-textarea mb-4 ml-5" placeholder="Email Address">
+            <div *ngIf="signupForm.controls['email'].invalid && (signupForm.controls['email'].dirty || signupForm.controls['email'].touched)">
+              <div *ngIf="signupForm.controls['email'].errors.required" class="text-danger">Email is required</div>
+              <div *ngIf="signupForm.controls['email'].errors.email" class="text-danger">Invalid email format</div>
+            </div>
+          
+            <input formControlName="password" type="password" class="underline-textarea ml-5" placeholder="Password">
+            <div *ngIf="signupForm.controls['password'].invalid && (signupForm.controls['password'].dirty || signupForm.controls['password'].touched)">
+              <div *ngIf="signupForm.controls['password'].errors.required" class="text-danger">Password is required</div>
+            </div///////>
+          
+            <button type="submit" [disabled]="signupForm.invalid" class="btn mt-11 font-alef w-full md:w-96 md:ml-16 ml-0 md:mr-64 md:w-400px bg-blue-500 text-white mb-4 border-none">Create Account</button>
+          </form>
+          <p class="ml-14 md:ml-32 md:mr-36 mt-5 md:mt-0">Already have an account?<span class="login-link ml-1"> <a routerLink="/login">Log in</a> </span></p>
+
+<p class="ml-36 md:ml-52 md:mr-52 mt-6 md:mt-5 text-black font-bold font-urbasnit">GalaxyTalk</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+  /////////
+  import { Component,OnInit } from '@angular/core';
+import { NgModel } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+
+@Component({
+  selector: 'app-signup',
+  standalone: true,
+  imports: [FormsModule,RouterModule],
+  templateUrl: './signup.component.html',
+  styleUrl: './signup.component.css'
+})
+export class SignupComponent implements OnInit {
+  signupForm!: FormGroup;
+
+  constructor(private fb: FormBuilder) { }
+
+  ngOnInit(): void {
+    this.signupForm = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
+    });
+  }
+
+  validation(): void {
+    if (this.signupForm.valid) {
+      const user = this.signupForm.value;
+      console.log(user);
+    }
+  }
+}
+
+  
+  
