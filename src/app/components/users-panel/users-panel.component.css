@@ -1,7 +1,15 @@
-.user-info-panel{
+.user-panel-wrapper{
+    /* border: 1px solid greenyellow; */
+}
+.search-panel{
     /* border: 1px solid greenyellow; */
 }
 
-.user-info{
-    
+.users-list-panel{
+    height: 88vh;
+}
+
+
+.notfi{
+    background-color:#64A5FF ;
 }
