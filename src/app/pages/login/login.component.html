@@ -12,7 +12,7 @@
           <h2 class="text-xl font-bold text-black lg:mt-20 lg:mb-8 md:mt-12 md:mb-5 sm:mt-12 sm:mb-5" >Log In</h2>
         </div>
 
-        <form (submit)="Add()" class="form mx-6" [formGroup]="loginValidation">
+        <form (submit)="Add(email.value, password.value)" class="form mx-6" [formGroup]="loginValidation">
           <div  class="form-group mx-5 mt-2">
             <input
               #email

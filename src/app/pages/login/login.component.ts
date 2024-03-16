@@ -11,7 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
   selector: 'app-login',
   standalone: true,
 
-  imports: [RouterModule,ReactiveFormsModule , NgClass ,CommonModule],
+  imports: [RouterModule,ReactiveFormsModule , NgClass ,CommonModule, HttpClientModule],
   providers:[LoginService],
 
   templateUrl: './login.component.html',
