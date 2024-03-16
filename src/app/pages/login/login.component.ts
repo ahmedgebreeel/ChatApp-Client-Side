@@ -16,14 +16,19 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 })
 export class LoginComponent {
 
-
-
   changeType:boolean=true;
   visible :boolean=true;
+  
+  ///--------------------- showPassword---------
+    showPassword(){
+      this.changeType= !this.changeType;
+      this.visible = ! this.visible ;
+  }
+
 
  // #region for  loginValidation
   loginValidation = new FormGroup({
-    email : new FormControl("" , Validators.required),
+    email : new FormControl("" , [Validators.required,Validators.email]),
     password : new FormControl("" , [Validators.required , Validators.minLength(8)])
   })
 
@@ -47,10 +52,6 @@ export class LoginComponent {
 
   // #endregion
 
-  ///--------------------- showPassword---------
-  showPassword(){
-    this.changeType= !this.changeType;
-    this.visible = ! this.visible ;
-}
+
 
 }
