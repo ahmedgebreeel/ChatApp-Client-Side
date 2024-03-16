@@ -1,16 +1,23 @@
+
 import { CommonModule, NgClass } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
+
 @Component({
   selector: 'app-login',
   standalone: true,
+
   imports: [RouterModule,ReactiveFormsModule , NgClass ,CommonModule],
+
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+
+
+
   changeType:boolean=true;
   visible :boolean=true;
 
@@ -45,4 +52,5 @@ export class LoginComponent {
     this.changeType= !this.changeType;
     this.visible = ! this.visible ;
 }
+
 }
