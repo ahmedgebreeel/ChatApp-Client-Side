@@ -1,0 +1,18 @@
+@media (max-width : 640px) {
+  .centerDiv{
+    width: 70%;
+  }
+  .first {
+    width: 100%;
+  }
+  .galaxy{
+
+    margin-left: 80px;
+  }
+  .log{
+    margin-top: 10%;
+  }
+  .img{
+    visibility: hidden;
+}
+}
