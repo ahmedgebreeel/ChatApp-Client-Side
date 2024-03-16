@@ -1,22 +1,34 @@
+
 import { CommonModule, NgClass } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
+
 @Component({
   selector: 'app-login',
   standalone: true,
+
   imports: [RouterModule,ReactiveFormsModule , NgClass ,CommonModule],
+
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+
   changeType:boolean=true;
   visible :boolean=true;
+  
+  ///--------------------- showPassword---------
+    showPassword(){
+      this.changeType= !this.changeType;
+      this.visible = ! this.visible ;
+  }
+
 
  // #region for  loginValidation
   loginValidation = new FormGroup({
-    email : new FormControl("" , Validators.required),
+    email : new FormControl("" , [Validators.required,Validators.email]),
     password : new FormControl("" , [Validators.required , Validators.minLength(8)])
   })
 
@@ -40,9 +52,6 @@ export class LoginComponent {
 
   // #endregion
 
-  ///--------------------- showPassword---------
-  showPassword(){
-    this.changeType= !this.changeType;
-    this.visible = ! this.visible ;
-}
+
+
 }
