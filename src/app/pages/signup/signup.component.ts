@@ -1,3 +1,4 @@
+
 import { Component,OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AbstractControl, FormBuilder, FormGroupDirective } from '@angular/forms';
@@ -13,9 +14,11 @@ import {
 } from '@angular/forms';
 
 
+
 @Component({
   selector: 'app-signup',
   standalone: true,
+
   imports: [FormsModule,ReactiveFormsModule,CommonModule ],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css'
@@ -47,3 +50,4 @@ Add(){
 }
 
 }
+

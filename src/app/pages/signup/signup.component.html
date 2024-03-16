@@ -1,5 +1,6 @@
 <style>
 .underline-textarea {
+
     border: none;
     border-bottom: 0.5px solid rgb(147, 144, 144);
     resize: none;
@@ -42,11 +43,14 @@
 }
 
 
+
 </style>
+
 
 
    <div class="h-screen py-[3%] bg-gray-200 overflow-auto md:overflow-hidden ">
     <div class="w-9/12 mx-auto" >
+
       <div class="flex flex-col md:flex-row bg-white rounded-xl shadow-lg overflow-hidden">
         <div class="w-full md:w-1/2">
           <img src="assets/pic1.jpg" alt="Placeholder Image">
@@ -54,17 +58,20 @@
         <div class="w-full md:w-1/2 px-6 py-8">
           <h2 class="text-black text-2xl font-bold ml-4  mt-4 md:mt-0 mb-4 md:mb-8" style="font-family: Alef">Create Account</h2>
   
+
           <div class="flex flex-col md:flex-row justify-center mb-8 md:mr-14">
             <button class="btn mr-5 mb-4 md:mb-0 bg-white rounded-md border border-gray-400">
               <i class="fa-brands fa-google"></i>
               <p class="ml-3 txt-btn"> Sign up with Google </p>
             </button>
             <button class="btn bg-white rounded-md border border-gray-400">
+
               <i class="fa-brands fa-facebook"></i>
               <p class="ml-2 txt-btn"> Sign up with Facebook </p>
             </button>
           </div>
   
+
   
           <p class="ml-40 md:ml-56 mt-5 mb-5"> - OR - </p>
           <form class="form" #form="ngForm" (ngSubmit)="Add()">
@@ -105,3 +112,4 @@
           <p class="ml-14 md:ml-32 md:mr-36 mt-5 md:mt-0">Already have an account?<span class="login-link ml-1"> <a routerLink="/login">Log in</a> </span></p>
           <p class="ml-36 md:ml-52 md:mr-52 mt-6 md:mt-5 text-black font-bold font-urbasnit">GalaxyTalk</p>
           
+
