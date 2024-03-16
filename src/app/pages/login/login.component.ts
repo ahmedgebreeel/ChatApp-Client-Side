@@ -1,8 +1,10 @@
 
 import { CommonModule, NgClass } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import {Router , RouterModule } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { LoginService } from '../../service/login.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @Component({
@@ -10,6 +12,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
   standalone: true,
 
   imports: [RouterModule,ReactiveFormsModule , NgClass ,CommonModule],
+  providers:[LoginService],
 
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
@@ -18,7 +21,9 @@ export class LoginComponent {
 
   changeType:boolean=true;
   visible :boolean=true;
-  
+
+  constructor(private LService: LoginService , private router :Router) {}
+
   ///--------------------- showPassword---------
     showPassword(){
       this.changeType= !this.changeType;
@@ -41,13 +46,22 @@ export class LoginComponent {
     return this.loginValidation.controls['password'].valid;
   }
 
-  Add(){
+  Add(email: any, password: any){
     if(this.loginValidation.valid){
       console.log("login successfully");
-      
+
     }else{
       alert("AGAIN")
     }
+    this.LService.login(email, password).subscribe({
+      next:(data)=>{
+        console.log(data);
+
+        this.router.navigate(['/welcome'])
+
+
+      }
+  });
   }
 
   // #endregion
