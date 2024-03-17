@@ -1,11 +1,12 @@
 import { HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../../service/users.service';
+import { OneUserComponent } from '../one-user/one-user.component';
 
 @Component({
   selector: 'app-users-panel',
   standalone: true,
-  imports: [HttpClientModule],
+  imports: [OneUserComponent , HttpClientModule],
   providers: [UsersService],
   templateUrl: './users-panel.component.html',
   styleUrl: './users-panel.component.css'
