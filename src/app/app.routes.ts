@@ -5,7 +5,7 @@ import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { ChatComponent } from './pages/chat/chat.component';
 
 export const routes: Routes = [
-    {path: '', component: LoginComponent},
+    {path: '', redirectTo: 'login', pathMatch: 'full'},
     {path: 'login', component: LoginComponent},
     {path: 'register', component: SignupComponent},
     {path: 'welcome', component: WelcomeComponent},
