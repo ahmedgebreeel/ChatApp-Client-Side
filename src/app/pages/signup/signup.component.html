@@ -1,153 +1,201 @@
+<style>
+  .underline-textarea {
+    border: none;
+    border-bottom: 0.5px solid rgb(147, 144, 144);
+    resize: none;
+    width: 80%;
+    padding: 8px 0;
+    font-size: 15px;
+    font-family: Arial, sans-serif;
+    background-color: transparent;
+    margin-right: 80px;
+    color: #000;
+    padding-bottom: 0px;
+  }
 
-  <style>
-    .underline-textarea {
-        border: none;
-        border-bottom: 0.5px solid rgb(147, 144, 144);
-        resize: none;
-        width: 80%;
-        padding: 8px 0;
-        font-size: 15px;
-        font-family: Arial, sans-serif;
-        background-color: transparent;
-        margin-right: 80px;
-        color: #000; 
-        padding-bottom: 0px;
-    }
 
-    .login-link {
-        color: #64A5FF;
-    }
+  .login-link {
+    color: #64a5ff;
+  }
 
-    .fa-google {
-        color: rgb(255, 81, 0);
-    }
+  .fa-google {
+    color: rgb(255, 81, 0);
+  }
 
-    .fa-facebook {
-        color: blue;
-    }
+  .fa-facebook {
+    color: blue;
+  }
 
-    .txt-btn p {
-        color: #0000;
-        font-family: Yinmar;
-        font-size: 13.98px;
-    }
+  .txt-btn p {
+    color: #0000;
+    font-family: Yinmar;
+    font-size: 13.98px;
+  }
 
-    .eye-icon {
-        position: relative;
-        bottom: 12px;
-        left: 80%;
-        transform: translateY(-50%);
-    }
+  .eye-icon {
+    position: relative;
+    bottom: 12px;
+    left: 80%;
+    transform: translateY(-50%);
+  }
 
-    .error-message {
-        color: red;
-    }
+  .error-message {
+    color: red;
+  }
 
-    @media screen and (max-width: 1300px) {
-        .btn {
-            width: 45%;
-            margin-left: 0;
-            margin-right: 0;
-            height: 70%;
-            margin: 10px;
-            padding: 5px;
-           
-        }
-        #btns{
-            width: 100%;
-            margin-left: 0;
-            margin-right: 0px;
-        }
-
-    }
-    @media screen and (max-width: 766px) {
+  @media screen and (max-width: 1300px) {
     .btn {
-        width: 100%;
-        margin-left: 0;
-        margin-right: 0;
+      width: 45%;
+      margin-left: 0;
+      margin-right: 0;
+      height: 70%;
+      margin: 10px;
+      padding: 5px;
     }
-}
-
+    #btns {
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0px;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  @media screen and (max-width: 766px) {
+    .btn {
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
 </style>
 
-
-
-
 <div class="h-screen py-[3%] bg-gray-200 overflow-auto md:overflow-hidden">
-    <div class="w-9/12 mx-auto">
-        <div class="flex flex-col md:flex-row bg-white rounded-xl shadow-lg overflow-hidden">
-            <div class="w-full md:w-1/2">
-                <img src="assets/pic1.jpg" alt="Placeholder Image">
-            </div>
+  <div class="w-9/12 mx-auto">
+    <div
+      class="flex flex-col md:flex-row bg-white rounded-xl shadow-lg overflow-hidden"
+    >
+      <div class="mt-10 w-full md:w-1/2">
+        <img src="assets/pic1.jpg" alt="Placeholder Image" />
+      </div>
 
-            <div class="w-full md:w-1/2 px-6 py-8">
-                <h2 class="text-black text-2xl font-bold ml-4 mt-4 md:mt-0 mb-4 md:mb-8 font-Alef">Create Account</h2>
-                
-                <div class="flex flex-col md:flex-row justify-center md:justify-start mb-8 md:mr-14">
-                    <button class="btn flex items-center mr-5 mb-4 md:mb-0 bg-white rounded-md border border-gray-400">
-                        <i class="fa-brands fa-google"></i>
-                        <p class="ml-3 txt-btn">Sign up with Google</p>
-                    </button>
-                    
-                    <button class="btn flex items-center bg-white rounded-md border border-gray-400">
-                        <i class="fa-brands fa-facebook"></i>
-                        <p class="ml-2 txt-btn">Sign up with Facebook</p>
-                    </button>
-                </div>
-                
-                <p class="ml-4 md:ml-0 mt-5 mb-5 text-center" id="or">- OR -</p>
+      <div class="w-full md:w-1/2 px-6 py-8">
+        <h2
+          class="text-black text-2xl font-bold ml-4 mt-4 md:mt-0 mb-4 md:mb-8 font-Alef"
+        >
+          Create Account
+        </h2>
 
-                <form class="form" #form="ngForm" (ngSubmit)="signup(name.value,email.value,password.value)">
-                   
-                    <input ngModel name="name" #name="ngModel" type="text" class="form-control underline-textarea mb-4 ml-5" placeholder="Full Name" required>
-                    <div *ngIf="name.errors && (name.dirty || name.touched)">
-        
-                        <div *ngIf="name.errors['required']">
-                            <p class="error-message">Name is required</p>
-                        </div>
-        
-                        <div *ngIf="name.errors['minlength']">
-                            <p class="error-message">Name must be at least 3 characters long</p>
-                        </div>
-                    </div>
-        
-        
-                
-                    <input ngModel name="email" #email="ngModel" type="email" class="form-control underline-textarea mb-4 ml-5" placeholder="Email Address" required email>
-                    <div *ngIf="email.errors && (email.dirty || email.touched)">
-                        <div *ngIf="email.errors['required']">
-                            <p class="error-message">Email is required</p>
-                        </div>
-                        <div *ngIf="email.errors['email']">
-                            <p class="error-message">Invalid email format</p>
-                        </div>
-                    </div>
-        
-        
-        
-                
-                    <input ngModel name="password" #password="ngModel" type="password" class="form-control underline-textarea ml-5" placeholder="Password" required minlength="5">
-                    <div *ngIf="password.errors && (password.dirty || password.touched)">
-                        <div *ngIf="password.errors['required']">
-                            <p class="error-message">Password is required</p>
-                        </div>
-                        <div *ngIf="password.errors['minlength']">
-                            <p class="error-message">Password must be at least 8 characters long</p>
-                        </div>
-                    </div>
+        <div
+          class="flex flex-col md:flex-row justify-center md:justify-start mb-8 md:mr-14"
+        >
+          <button
+            class="btn flex items-center mr-5 mb-4 md:mb-0 bg-white rounded-md border border-gray-400"
+          >
+            <i class="fa-brands fa-google"></i>
+            <p class="ml-3 txt-btn">Sign up with Google</p>
+          </button>
 
-
-
-
-                    <button type="submit" class="btn mt-11 font-alef w-full bg-blue-500 text-white mb-4 border-none" id="btns">Create Account</button>
-                </form>
-
-                <div class="box text-center">
-                    <p class="ml-4 md:ml-0 mt-5">Already have an account?<span class="login-link ml-1"><a routerLink="/login">Log in</a></span></p>
-                    <p class="ml-4 md:ml-0 mt-6 text-black font-bold font-urbasnit" id="GalaxyTalk">GalaxyTalk</p>
-                </div>
-            </div>
+          <button
+            class="btn flex items-center bg-white rounded-md border border-gray-400"
+          >
+            <i class="fa-brands fa-facebook"></i>
+            <p class="ml-2 txt-btn">Sign up with Facebook</p>
+          </button>
         </div>
-    </div>
-</div>
 
+        <p class="ml-4 md:ml-0 mt-5 mb-5 text-center" id="or">- OR -</p>
+
+        <form
+          class="form"
+          #form="ngForm"
+          (ngSubmit)="signup(name.value, email.value, password.value)"
+        >
+          <input
+            ngModel
+            name="name"
+            #name="ngModel"
+            type="text"
+            class="form-control underline-textarea mb-4 ml-5"
+            placeholder="Full Name"
+            required
+          />
+          <div *ngIf="name.errors && (name.dirty || name.touched)">
+            <div *ngIf="name.errors['required']">
+              <p class="error-message ml-6">Name is required</p>
+            </div>
+
+            <div *ngIf="name.errors['minlength']">
+              <p class="error-message">
+                Name must be at least 3 characters long
+              </p>
+            </div>
+          </div>
+
+          <input
+            ngModel
+            name="email"
+            #email="ngModel"
+            type="email"
+            class="form-control underline-textarea mb-4 ml-5"
+            placeholder="Email Address"
+            required
+            email
+          />
+          <div *ngIf="email.errors && (email.dirty || email.touched)">
+            <div *ngIf="email.errors['required']">
+              <p class="error-message ml-6">Email is required</p>
+            </div>
+            <div *ngIf="email.errors['email']">
+              <p class="error-message ml-6">Invalid email format</p>
+            </div>
+          </div>
+
+          <input
+            ngModel
+            name="password"
+            #password="ngModel"
+            type="password"
+            class="form-control underline-textarea ml-5"
+            placeholder="Password"
+            required
+            minlength="5"
+          />
+          <div *ngIf="password.errors && (password.dirty || password.touched)">
+            <div *ngIf="password.errors['required']">
+              <p class="error-message ml-6">Password is required</p>
+            </div>
+            <div *ngIf="password.errors['minlength']">
+              <p class="error-message ml-4">
+                Password must be at least 8 characters long
+              </p>
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            class="btn mt-11 font-alef w-full bg-blue-500 text-white mb-4 border-none"
+            id="btns"
+          >
+            Create Account
+          </button>
+        </form>
+
+        <div class="box text-center">
+          <p class="ml-4 md:ml-0 mt-5">
+            Already have an account?<span class="login-link ml-1"
+              ><a routerLink="/login">Log in</a></span
+            >
+          </p>
+          <p
+            class="ml-4 md:ml-0 mt-6 text-black font-bold font-urbasnit"
+            id="GalaxyTalk"
+          >
+            GalaxyTalk
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
