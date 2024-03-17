@@ -1,4 +1,5 @@
 
+
 import { CommonModule, NgClass } from '@angular/common';
 import { Component } from '@angular/core';
 import {Router , RouterModule } from '@angular/router';
@@ -6,10 +7,11 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { LoginService } from '../../service/login.service';
 import { HttpClientModule } from '@angular/common/http';
 
+import { ToastrService } from 'ngx-toastr';
 
-@Component({
-  selector: 'app-login',
-  standalone: true,
+   @Component({
+   selector: 'app-login',
+    standalone: true,
 
   imports: [RouterModule,ReactiveFormsModule , NgClass ,CommonModule, HttpClientModule],
   providers:[LoginService],
@@ -22,7 +24,7 @@ export class LoginComponent {
   changeType:boolean=true;
   visible :boolean=true;
 
-  constructor(private LService: LoginService , private router :Router) {}
+  constructor(private LService: LoginService , private router :Router,private toastr: ToastrService) {}
 
   ///--------------------- showPassword---------
     showPassword(){
@@ -51,16 +53,28 @@ export class LoginComponent {
       console.log("login successfully");
 
     }else{
-      alert("AGAIN")
+      this.toastr.error('Your email or password is wrong');
+
     }
     this.LService.login(email, password).subscribe({
       next:(data)=>{
         console.log(data);
+        this.toastr.success('You logged successfully');
+        setTimeout(() => {
+          this.router.navigate(['/welcome']);
+        }, 1000); 
 
-        this.router.navigate(['/welcome'])
+      
+
+      },
 
 
+
+      error: (error) => {
+        console.error(error);
+        this.toastr.error(' Please try again later.','An error occurred');
       }
+
   });
   }
 
@@ -69,3 +83,4 @@ export class LoginComponent {
 
 
 }
+      
