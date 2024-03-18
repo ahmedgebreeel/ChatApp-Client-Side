@@ -1,35 +1,49 @@
 <div class="user-panel-wrapper h-screen w-90 flex gap-3 flex-col ml-4">
-    <div class="user-info-panel p-2 w-96 h-16 flex justify-between items-center rounded-3xl bg-white mt-4">
-        <div class="user-info flex justify-center items-center gap-3 ml-4">
-            <div class="user-img w-10 h-10 bg-neutral-300 rounded-md">
-                <!-- image here -->
-            </div>
-            <div class="user-name font-medium">
-                <p class="text-black">Ahmed Sayed</p>
-            </div>
-        </div>
-        <div class="setting-icon mr-4">
-            <!-- <i class="fa-solid fa-gear" style="color: #737373;"></i> -->
-            <button (click)="logOut()" class="btn btn-sm text-red-300 bg-gray-200 hover:bg-gray-100 border-none">Log out</button>
-        </div>
+  <div
+    class="user-info-panel p-2 w-96 h-16 flex justify-between items-center rounded-3xl bg-white mt-4"
+  >
+    <div class="user-info flex justify-center items-center gap-3 ml-4">
+      <div class="user-img w-10 h-10 bg-neutral-300 rounded-md">
+        <!-- image here -->
+      </div>
+      <div class="user-name font-medium">
+        <p class="text-black">Ahmed Sayed</p>
+      </div>
     </div>
-    <div class="users-list-panel w-96 bg-white rounded-3xl px-2">
-        <div class="search-panel w-96 flex ml-6 items-center gap-5 mt-4 mb-2">
-            <i class="fa-solid fa-bars fa-lg" style="color: #737373;"></i>
-            <div class="search-input relative">
-                <i class="fa-solid fa-magnifying-glass absolute ml-3 mt-2.5" style="color: #979ca5;"></i>
-                <input type="text" [(ngModel)]="searchText" class="form-control" placeholder="Search"  class="input search-input rounded-3xl w-72 h-9 bg-neutral-200 max-w-xs pl-10" />
-            </div>
-        </div>
-
-        @for (user of users | searchfilter :searchText ; track user._id) {
-
-            <app-one-user [oneUser]="user"></app-one-user>
-        }
-
-        </div>
+    <div class="setting-icon mr-4">
+      <!-- <i class="fa-solid fa-gear" style="color: #737373;"></i> -->
+      <button
+        (click)="logOut()"
+        class="btn btn-sm text-red-300 bg-gray-200 hover:bg-gray-100 border-none"
+      >
+        Log out
+      </button>
+    </div>
+  </div>
+  <div class="users-list-panel w-96 bg-white rounded-3xl px-2">
+    <div class="search-panel w-96 flex ml-6 items-center gap-5 mt-4 mb-2">
+      <i class="fa-solid fa-bars fa-lg" style="color: #737373"></i>
+      <div class="search-input relative">
+        <i
+          class="fa-solid fa-magnifying-glass absolute ml-3 mt-2.5"
+          style="color: #979ca5"
+        ></i>
+        <input
+          type="text"
+          [(ngModel)]="searchText"
+          class="form-control"
+          placeholder="Search"
+          class="input search-input rounded-3xl w-72 h-9 bg-neutral-200 max-w-xs pl-10"
+        />
+      </div>
     </div>
 
+    @for (user of users | searchfilter :searchText ; track user._id) {
+
+    <app-one-user [oneUser]="user"></app-one-user>
+    }
+  </div>
+</div>
 
 
 
@@ -58,22 +72,19 @@
 
 
 
-
-
-
-     <!-- <div class="users cursor-pointer hover:bg-gray-100  rounded-2xl p-3 flex items-center justify-between"> -->
-        <!-- <div class="img-name-wrapper flex items-center"> -->
-        <!-- <div class="users-list-img  w-11 h-11 bg-neutral-300 rounded-3xl relative"> -->
-            <!-- img here -->
-            <!-- <div class="online absolute ml-8 mt-8 bg-green-500 w-2.5 h-2.5 rounded-full text-white flex justify-center items-center text-sm"></div> -->
-        <!-- </div> -->
-        <!-- <div class="name-message flex flex-col ml-3">
+<!-- <div class="users cursor-pointer hover:bg-gray-100  rounded-2xl p-3 flex items-center justify-between"> -->
+<!-- <div class="img-name-wrapper flex items-center"> -->
+<!-- <div class="users-list-img  w-11 h-11 bg-neutral-300 rounded-3xl relative"> -->
+<!-- img here -->
+<!-- <div class="online absolute ml-8 mt-8 bg-green-500 w-2.5 h-2.5 rounded-full text-white flex justify-center items-center text-sm"></div> -->
+<!-- </div> -->
+<!-- <div class="name-message flex flex-col ml-3">
             <span class="font-medium text-black">Jessica Drew</span>
             <span class="text-xs">Ok, See you later</span>
         </div> -->
-    <!-- </div> -->
-        <!-- <div class="time flex justify-center items-center flex-col"> -->
-            <!-- <span class="text-sm absolute mb-7 mr-7 mt-2">18:30</span> -->
-            <!-- <div class="notfi absolute w-5 h-5 rounded-3xl text-white flex justify-center items-center text-sm mt-4 mr-7">2</div> -->
-        <!-- </div> -->
-    <!-- </div> -->
+<!-- </div> -->
+<!-- <div class="time flex justify-center items-center flex-col"> -->
+<!-- <span class="text-sm absolute mb-7 mr-7 mt-2">18:30</span> -->
+<!-- <div class="notfi absolute w-5 h-5 rounded-3xl text-white flex justify-center items-center text-sm mt-4 mr-7">2</div> -->
+<!-- </div> -->
+<!-- </div> -->
