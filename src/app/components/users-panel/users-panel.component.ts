@@ -20,8 +20,7 @@ export class UsersPanelComponent implements OnInit {
 
   constructor(private Uservice: UsersService, private router: Router) {}
   ngOnInit() {
-    const token = localStorage.getItem('token');
-    this.Uservice.getUsers(token).subscribe({
+    this.Uservice.getUsers().subscribe({
       next: (data) => {
         // console.log(data);
         this.users = data.body;
