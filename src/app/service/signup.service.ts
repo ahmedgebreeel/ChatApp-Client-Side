@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
+import { HttpClient, HttpResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 
 
@@ -8,14 +8,14 @@ import { HttpClient } from '@angular/common/http';
     providedIn: 'root'
   })
 
-export class signupServices{
+  export class signupServices{
 
 
-constructor(private http: HttpClient) { }
-private signupUrl = 'http://localhost:8000/user/signup';
-signup(name: string, email: string, password: string) {
-    // console.log(name,email,password);
-    
-    return this.http.post(this.signupUrl, { name, email, password });
-  }
-}
+    constructor(private http: HttpClient) { }
+    private signupUrl = 'http://localhost:8000/user/signup';
+    signup(name: string, email: string, password: string) : Observable <HttpResponse<any> >{
+        // console.log(name,email,password);
+        
+        return this.http.post(this.signupUrl, { name, email, password },{observe:'response'});
+      }
+    }
