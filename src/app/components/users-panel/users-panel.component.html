@@ -18,15 +18,15 @@
             <i class="fa-solid fa-bars fa-lg" style="color: #737373;"></i>
             <div class="search-input relative">
                 <i class="fa-solid fa-magnifying-glass absolute ml-3 mt-2.5" style="color: #979ca5;"></i>
-                <input type="text"  placeholder="Search" class="input search-input rounded-3xl w-72 h-9 bg-neutral-200 max-w-xs pl-10" />
+                <input type="text" [(ngModel)]="searchText" class="form-control" placeholder="Search"  class="input search-input rounded-3xl w-72 h-9 bg-neutral-200 max-w-xs pl-10" />
             </div>
         </div>
-       
-        @for (user of users; track user._id) {
+
+        @for (user of users | searchfilter :searchText ; track user._id) {
 
             <app-one-user [oneUser]="user"></app-one-user>
         }
-        
+
         </div>
     </div>
 
@@ -60,7 +60,7 @@
 
 
 
-   
+
      <!-- <div class="users cursor-pointer hover:bg-gray-100  rounded-2xl p-3 flex items-center justify-between"> -->
         <!-- <div class="img-name-wrapper flex items-center"> -->
         <!-- <div class="users-list-img  w-11 h-11 bg-neutral-300 rounded-3xl relative"> -->
