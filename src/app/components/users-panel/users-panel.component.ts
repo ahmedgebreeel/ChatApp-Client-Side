@@ -12,11 +12,13 @@ import { OneUserComponent } from '../one-user/one-user.component';
   styleUrl: './users-panel.component.css'
 })
 export class UsersPanelComponent implements OnInit {
+  users: any;
   constructor(private Uservice : UsersService){}
   ngOnInit(){
    this.Uservice.getUsers().subscribe({
     next: (data)=>{
       console.log(data);
+      this.users = data;
     },
     error: (err)=>{
       console.log(err);
