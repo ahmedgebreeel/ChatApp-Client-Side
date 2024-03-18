@@ -26,4 +26,10 @@ export class UsersPanelComponent implements OnInit {
    });
   }
 
+  logOut(){
+    localStorage.clear();
+
+    // make a req and navigat to login page
+  }
+
 }

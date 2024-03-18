@@ -66,7 +66,8 @@ export class LoginComponent {
 
       this.LService.login(email, password).subscribe({
         next: (data) => {
-          console.log(data);
+          console.log(data.body);
+          localStorage.setItem('token', data.body.token);
           this.router.navigate(['/welcome']);
           this.toastr.success('You logged successfully');
         },
