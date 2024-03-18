@@ -3,24 +3,21 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LoginService {
- 
- constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
   private url = 'http://localhost:8000/user/login';
 
- login(email: string, password: string): Observable<HttpResponse<any>> {
-    return this.http.post(this.url, { email, password }, { observe: 'response' });
+  login(email: string, password: string): Observable<HttpResponse<any>> {
+    return this.http.post(
+      this.url,
+      { email, password },
+      { observe: 'response' }
+    );
   }
-
-
 }
-
-
-
-
 
 
 
@@ -74,5 +71,3 @@ export class LoginService {
 //     localStorage.setItem('jwtToken', token);
 //   }
 // }
-
-

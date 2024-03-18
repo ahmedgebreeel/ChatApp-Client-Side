@@ -9,4 +9,8 @@ import { Component, Input } from '@angular/core';
 })
 export class OneUserComponent {
  @Input() oneUser:any;
+
+ selectUser(){
+    console.log(this.oneUser);
+ }
 }
