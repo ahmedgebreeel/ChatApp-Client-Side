@@ -65,13 +65,17 @@ export class SignupComponent {
   // #endregion
 
   signup(name: any, email: any, password: any): void {
+    
     // console.log(name,email,password);
 
     this.signupService.signup(name, email, password).subscribe(
-       (response) => {
-         console.log('Signup successful:', response);
+      (data) => {
+         console.log('Signup successful:', data.body);
+         localStorage.setItem('token', data.body.token)
+         localStorage.setItem('username',data.body.userName)
           this.router.navigate(['/welcome']);
        },
+      
          (error) => {
            console.error('Signup failed:', error);
       }

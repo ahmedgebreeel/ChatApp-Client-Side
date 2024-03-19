@@ -17,9 +17,11 @@ import { Router } from '@angular/router';
 export class UsersPanelComponent implements OnInit {
   users: any;
   searchText = '';
+  loggedUsername: any;
 
   constructor(private Uservice: UsersService, private router: Router) {}
   ngOnInit() {
+    this.loggedUsername = localStorage.getItem('username');
     this.Uservice.getUsers().subscribe({
       next: (data) => {
         // console.log(data);

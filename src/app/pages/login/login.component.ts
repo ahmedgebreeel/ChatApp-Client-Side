@@ -68,6 +68,7 @@ export class LoginComponent {
         next: (data) => {
           console.log(data.body);
           localStorage.setItem('token', data.body.token);
+          localStorage.setItem('username',data.body.userName)
           this.router.navigate(['/welcome']);
           this.toastr.success('You logged successfully');
         },
