@@ -3,6 +3,7 @@
 
 .main-layer{
     background-image: url("../../../assets/Artboard_1.png");
+    /* background-size: contain; */
 }
 
 *{
@@ -31,9 +32,9 @@
 
 .texts-wrapper{
     align-self: center;
-    width: 20rem;
+    width: 100rem;
     height: 20rem;
-   margin-left: 40rem;
+   height: 100vh;
 }
 
 .slogan{
