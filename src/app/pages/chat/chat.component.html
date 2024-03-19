@@ -2,7 +2,7 @@
 <app-users-panel></app-users-panel>
 <div class="user-chat-wrapper flex flex-col gap-3">
 <app-selected-user></app-selected-user>
-<app-chat-box></app-chat-box>
+<app-chat-box (myEvent)="reciveChatId($event)"></app-chat-box>
 <app-input-field></app-input-field>
 </div>
 </div>

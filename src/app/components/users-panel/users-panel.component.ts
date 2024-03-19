@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
   imports: [OneUserComponent, HttpClientModule, FormsModule, SearchfilterPipe],
 })
 export class UsersPanelComponent implements OnInit {
-  users = [];
+  users : any;
   searchText = '';
   loggedUsername: any;
   
@@ -24,7 +24,7 @@ export class UsersPanelComponent implements OnInit {
     this.loggedUsername = localStorage.getItem('username');
     this.Uservice.getUsers().subscribe({
       next: (data) => {
-        // console.log(data);
+        console.log(data);
         this.users = data.body;
       },
       error: (err) => {

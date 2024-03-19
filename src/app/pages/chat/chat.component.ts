@@ -13,4 +13,8 @@ import { InputFieldComponent } from '../../components/input-field/input-field.co
 })
 export class ChatComponent {
 
+  reciveChatId(chatId: any){
+    console.log(chatId);
+    
+  }
 }

@@ -6,11 +6,17 @@ import { Subject } from 'rxjs';
 })
 export class DataService {
 private dataSubject = new Subject<any>();
-
 data$ = this.dataSubject.asObservable();
+
+private anotherDataSubject = new Subject<any>();
+anotherData$ = this.anotherDataSubject.asObservable();
 
 sendData(data:any){
   this.dataSubject.next(data);
+}
+
+sendAnotherData(data:any){
+  this.anotherDataSubject.next(data);
 }
   
 }

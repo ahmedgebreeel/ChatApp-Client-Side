@@ -33,10 +33,13 @@
         />
       </div>
     </div>
-
-    @for (user of users.slice(0,10) | searchfilter :searchText ; track user._id) {
-
-    <app-one-user [oneUser]="user"></app-one-user>
+    @if (users) {
+      @for (user of users.slice(0,10) | searchfilter :searchText ; track user._id) {
+  
+      <app-one-user [oneUser]="user"></app-one-user>
+      }
+    }@else {
+      <div>loading...</div>
     }
   </div>
 </div>

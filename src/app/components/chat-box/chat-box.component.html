@@ -1,8 +1,10 @@
 <div class="chat-box-wrapper bg-white ml-4 rounded-3xl flex flex-col justify-end over overflow-hidden p-4">
-@if (messages.length > 0){
+@if (messages){
     @for (message of messages; track message._id) {
         <div>{{message.content}}</div>
     }
+}@else {
+    <div>loading...</div>
 }
 
 </div>

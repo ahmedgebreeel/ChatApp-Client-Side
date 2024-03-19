@@ -1,6 +1,6 @@
 
 import { MessageComponent } from '../message/message.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MessageService } from '../../service/message.service';
 import { HttpClientModule } from '@angular/common/http';
 import { DataService } from '../../service/data.service';
@@ -17,6 +17,7 @@ import { DataService } from '../../service/data.service';
 export class ChatBoxComponent implements OnInit {
    userId = "";
    messages : any;
+  @Output() myEvent = new EventEmitter();
  
   constructor(private messService : MessageService, private dataService: DataService){
       
@@ -25,7 +26,7 @@ export class ChatBoxComponent implements OnInit {
    ///calling dataService to get userId from one-user component
    this.dataService.data$.subscribe({
     next: (data)=>{
-      // console.log(data);
+      console.log(data);
       this.userId = data._id;
       console.log(this.userId);
 
@@ -33,7 +34,14 @@ export class ChatBoxComponent implements OnInit {
       this.messService.getMessages(this.userId).subscribe({
         next: (data: any)=>{
           console.log(data);
-          this.messages = data;
+          this.messages = data.message;
+          const chatId = data.chatId;
+          console.log(chatId);
+          this.myEvent.emit(chatId);
+          
+          // //calling dataService to send chatId to inputFiled Component
+          // this.dataService.sendAnotherData(chatId);
+
         },
         error: (err: any)=>{
           console.log(err);
