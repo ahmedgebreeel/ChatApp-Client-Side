@@ -1,4 +1,21 @@
-<div class="rounded-2xl message w-96 h-fit bg-neutral-300 text-neutral-900 pt-4 pl-4 pr-4 pb-2">
-        <span class="text-white">{{messageToShow}}</span>
-        <p class="text-xs mt-2 text-neutral-200 text-right">18:55 pm</p>
-</div>
+
+
+
+@if(sameUser){
+        <div class="wrapper flex items-end justify-end">
+                <div class="rounded-2xl message  w-96 h-fit bg-neutral-300 text-neutral-900 pt-4 pl-4 pr-4 pb-2">
+                        <span class="text-white">{{messageToShow.content}}</span>
+                        <p class="text-xs mt-2 text-neutral-200 text-right">{{messageToShow.createdAt}}</p>
+                </div>
+        </div>
+}@else{
+        <div class="wrapper flex">
+
+                <div class="rounded-2xl bg-slate-400 w-96 h-fit bg-neutral-300 text-neutral-900 pt-4 pl-4 pr-4 pb-2">
+                        <span class="text-white">{{messageToShow.content}}</span>
+                        <p class="text-xs mt-2 text-neutral-200 text-right">{{messageToShow.createdAt}}</p>
+                </div>
+        </div>
+}
+
+

@@ -9,10 +9,15 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 })
 export class MessageComponent implements OnChanges {
   @Input() messageToShow: any;
-
+  sameUser :unknown;
   constructor() {}
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log( changes['messageToShow'].currentValue);
+    const messageObj = changes['messageToShow'].currentValue;
+    const sender = messageObj.sender[0].name ;
+    if (sender === localStorage.getItem('username')){
+      this.sameUser = true;
+      console.log(this.sameUser);
+    }
   }
 }

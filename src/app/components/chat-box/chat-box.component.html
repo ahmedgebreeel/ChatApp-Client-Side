@@ -2,7 +2,7 @@
 @if (messages){
     @for (message of messages; track message._id) {
         <!-- <div>{{message.content}}</div> -->
-        <app-message [messageToShow]="message" ></app-message>
+        <app-message  [messageToShow]="message" ></app-message>
     }
 }@else {
     <div>loading...</div>
