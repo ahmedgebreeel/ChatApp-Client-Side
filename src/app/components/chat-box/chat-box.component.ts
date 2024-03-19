@@ -1,12 +1,15 @@
+
+import { MessageComponent } from '../message/message.component';
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from '../../service/message.service';
 import { HttpClientModule } from '@angular/common/http';
 import { DataService } from '../../service/data.service';
 
+
 @Component({
   selector: 'app-chat-box',
   standalone: true,
-  imports: [HttpClientModule],
+  imports: [HttpClientModule, MessageComponent],
   providers: [MessageService],
   templateUrl: './chat-box.component.html',
   styleUrl: './chat-box.component.css'
