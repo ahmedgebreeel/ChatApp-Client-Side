@@ -33,9 +33,13 @@
         />
       </div>
     </div>
+    <div class="rounded-xl p-1 flex-row bg-slate-100 mt-3  text-black font-bold">
+      <button routerLink="/chat" routerLinkActive="router-link-active" class="ml-12 rounded-3xl  w-32 h-10 bg-[#94c1ff]">Chats</button>
+      <button routerLink="/groups" class="ml-4 bg-[#94c1ff] w-32 h-10 rounded-3xl">Groups</button>
+    </div>
     @if (users) {
       @for (user of users.slice(0,10) | searchfilter :searchText ; track user._id) {
-  
+
       <app-one-user [oneUser]="user"></app-one-user>
       }
     }@else {

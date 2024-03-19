@@ -1,20 +1,18 @@
 import { HttpClientModule } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { UsersService } from '../../service/users.service';
-import { OneUserComponent } from '../one-user/one-user.component';
+import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RouterModule, Router } from '@angular/router';
 import { SearchfilterPipe } from '../../../Pipe/searchfilter.pipe';
-import { Router, RouterModule } from '@angular/router';
+import { UsersService } from '../../service/users.service';
 
 @Component({
-  selector: 'app-users-panel',
+  selector: 'app-groups',
   standalone: true,
-  providers: [UsersService],
-  templateUrl: './users-panel.component.html',
-  styleUrl: './users-panel.component.css',
-  imports: [OneUserComponent, HttpClientModule, FormsModule , RouterModule,  SearchfilterPipe],
+  imports: [ HttpClientModule, FormsModule , RouterModule,  SearchfilterPipe],
+  templateUrl: './groups.component.html',
+  styleUrl: './groups.component.css'
 })
-export class UsersPanelComponent implements OnInit {
+export class GroupsComponent {
   users : any;
   searchText = '';
   loggedUsername: any;

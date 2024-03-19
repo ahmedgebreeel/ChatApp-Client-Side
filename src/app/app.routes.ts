@@ -3,6 +3,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { ChatComponent } from './pages/chat/chat.component';
+import { GroupsComponent } from './components/groups/groups.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -10,4 +11,5 @@ export const routes: Routes = [
     {path: 'register', component: SignupComponent},
     {path: 'welcome', component: WelcomeComponent},
     {path: 'chat', component: ChatComponent},
+    {path: 'groups', component: GroupsComponent},
 ];
