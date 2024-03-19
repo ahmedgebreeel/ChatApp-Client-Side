@@ -1,12 +1,46 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MessageService } from '../../service/message.service';
+import { HttpClientModule } from '@angular/common/http';
+import { DataService } from '../../service/data.service';
 
 @Component({
   selector: 'app-chat-box',
   standalone: true,
-  imports: [],
+  imports: [HttpClientModule],
+  providers: [MessageService],
   templateUrl: './chat-box.component.html',
   styleUrl: './chat-box.component.css'
 })
-export class ChatBoxComponent {
+export class ChatBoxComponent implements OnInit {
+   userId = "";
+ 
+  constructor(private messService : MessageService, private dataService: DataService){
+      
+  }
+  ngOnInit(){
+   ///calling dataService to get userId from one-user component
+   this.dataService.data$.subscribe({
+    next: (data)=>{
+      // console.log(data);
+      this.userId = data._id;
+      console.log(this.userId);
+
+      ///calling getMessage service to get messages
+      this.messService.getMessages(this.userId).subscribe({
+        next: (data: any)=>{
+          console.log(data);
+        },
+        error: (err: any)=>{
+          console.log(err);
+          
+        }
+      })
+      
+    },
+    error: (err)=>{console.log(err);
+    }
+  })
+  }
+ 
 
 }

@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { DataService } from '../../service/data.service';
 
 @Component({
   selector: 'app-one-user',
@@ -10,11 +11,13 @@ import { Router } from '@angular/router';
 })
 export class OneUserComponent {
  @Input() oneUser:any;
- constructor(private router:Router){
+ constructor(private router:Router, private dataService: DataService){
  }
 
  selectUser(){
-    console.log(this.oneUser);
+    // console.log(this.oneUser);
+    /// calling dataService to send userId
+  this.dataService.sendData(this.oneUser);
   this.router.navigateByUrl("/chat");
  }
 }
