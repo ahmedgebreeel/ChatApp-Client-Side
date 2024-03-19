@@ -16,6 +16,7 @@ import { DataService } from '../../service/data.service';
 })
 export class ChatBoxComponent implements OnInit {
    userId = "";
+   messages : any;
  
   constructor(private messService : MessageService, private dataService: DataService){
       
@@ -32,6 +33,7 @@ export class ChatBoxComponent implements OnInit {
       this.messService.getMessages(this.userId).subscribe({
         next: (data: any)=>{
           console.log(data);
+          this.messages = data;
         },
         error: (err: any)=>{
           console.log(err);

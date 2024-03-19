@@ -1,4 +1,8 @@
 <div class="chat-box-wrapper bg-white ml-4 rounded-3xl flex flex-col justify-end over overflow-hidden p-4">
-<app-message class="message"></app-message>
-<app-message class="message self-end"></app-message>
+@if (messages.length > 0){
+    @for (message of messages; track message._id) {
+        <div>{{message.content}}</div>
+    }
+}
+
 </div>

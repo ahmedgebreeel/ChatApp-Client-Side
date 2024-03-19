@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
   imports: [OneUserComponent, HttpClientModule, FormsModule, SearchfilterPipe],
 })
 export class UsersPanelComponent implements OnInit {
-  users: any;
+  users = [];
   searchText = '';
   loggedUsername: any;
   
