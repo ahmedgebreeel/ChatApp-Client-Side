@@ -14,7 +14,7 @@ export class MessageService {
   }
 
   sendMessage(content:any, chatId:string){
-    this.client.post(this.URL + "message" , {content,chatId});
+    return this.client.post(this.URL + "message" , {content,chatId});
   }
 
 }

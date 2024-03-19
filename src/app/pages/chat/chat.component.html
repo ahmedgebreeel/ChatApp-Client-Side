@@ -3,7 +3,7 @@
 <div class="user-chat-wrapper flex flex-col gap-3">
 <app-selected-user></app-selected-user>
 <app-chat-box (myEvent)="reciveChatId($event)"></app-chat-box>
-<app-input-field></app-input-field>
+<app-input-field [currentChId]="chatId"></app-input-field>
 </div>
 </div>
 
