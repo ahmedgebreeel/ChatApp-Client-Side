@@ -6,10 +6,8 @@
 }
 
 .users-list-panel{
-    height: 88vh;
+    height: 83%;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
-
-.notfi{
-    background-color:#64A5FF ;
-}
