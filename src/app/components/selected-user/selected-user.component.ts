@@ -8,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './selected-user.component.css'
 })
 export class SelectedUserComponent {
-
+  loggedUsername: any;
+  constructor(){
+   this.loggedUsername = localStorage.getItem('username');
+  }
+    
 }

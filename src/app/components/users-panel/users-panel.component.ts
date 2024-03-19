@@ -18,7 +18,7 @@ export class UsersPanelComponent implements OnInit {
   users: any;
   searchText = '';
   loggedUsername: any;
-
+  
   constructor(private Uservice: UsersService, private router: Router) {}
   ngOnInit() {
     this.loggedUsername = localStorage.getItem('username');
