@@ -31,7 +31,8 @@ export class InputFieldComponent implements OnInit{
     this.messService.sendMessage(message,this.currentChId).subscribe({
       next: (data)=>{
         console.log(data);
-        
+        // Refresh the page after sending the message
+        window.location.reload();
       },
       error: (err)=>{console.log(err); }
     })
