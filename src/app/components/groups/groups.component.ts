@@ -4,26 +4,27 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule, Router } from '@angular/router';
 import { SearchfilterPipe } from '../../../Pipe/searchfilter.pipe';
 import { UsersService } from '../../service/users.service';
+import { OneUserComponent } from '../one-user/one-user.component';
 
 @Component({
   selector: 'app-groups',
   standalone: true,
-  imports: [ HttpClientModule, FormsModule , RouterModule,  SearchfilterPipe],
+  imports: [ OneUserComponent,HttpClientModule, FormsModule , RouterModule,  SearchfilterPipe],
   templateUrl: './groups.component.html',
   styleUrl: './groups.component.css'
 })
 export class GroupsComponent {
-  users : any;
+  groups : any;
   searchText = '';
   loggedUsername: any;
 
   constructor(private Uservice: UsersService, private router: Router) {}
   ngOnInit() {
     this.loggedUsername = localStorage.getItem('username');
-    this.Uservice.getUsers().subscribe({
+    this.Uservice.getGroups().subscribe({
       next: (data) => {
         console.log(data);
-        this.users = data.body;
+        this.groups = data.body;
       },
       error: (err) => {
         console.log(err);

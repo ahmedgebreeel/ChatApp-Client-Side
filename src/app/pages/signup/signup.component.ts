@@ -73,7 +73,7 @@ export class SignupComponent {
          console.log('Signup successful:', data.body);
          localStorage.setItem('token', data.body.token)
          localStorage.setItem('username',data.body.userName)
-          this.router.navigate(['/welcome']);
+          this.router.navigate(['/chat']);
        },
       
          (error) => {

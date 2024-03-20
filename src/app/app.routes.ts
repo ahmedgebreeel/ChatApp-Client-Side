@@ -10,7 +10,9 @@ export const routes: Routes = [
     {path: '', redirectTo: 'login', pathMatch: 'full'},
     {path: 'login', component: LoginComponent},
     {path: 'register', component: SignupComponent},
+
     {path: 'welcome', component: WelcomeComponent,canActivate:[authGuard]},
     {path: 'chat', component: ChatComponent,canActivate:[authGuard]},
     {path: 'groups', component: GroupsComponent,canActivate:[authGuard]},
+
 ];
