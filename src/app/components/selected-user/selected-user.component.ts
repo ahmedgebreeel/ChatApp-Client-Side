@@ -9,9 +9,12 @@ import { DataService } from '../../service/data.service';
   styleUrl: './selected-user.component.css'
 })
 export class SelectedUserComponent implements OnChanges{
-  @Input() selectedUser: string = '';
+  @Input() selectedUser: any;
   constructor(private dataService: DataService){
-  //  this.loggedUsername = localStorage.getItem('username');
+    if (sessionStorage.getItem('selectedUserName')){
+      this.selectedUser = sessionStorage.getItem('selectedUserName');
+      console.log(this.selectedUser);
+    }
   this.dataService.data$.subscribe({
     next: (data)=>{
       console.log(data);
@@ -31,5 +34,7 @@ export class SelectedUserComponent implements OnChanges{
   ngOnInit(){
    
 }
+
+
     
 }

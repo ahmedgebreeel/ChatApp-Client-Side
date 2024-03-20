@@ -15,9 +15,11 @@ export class OneUserComponent {
  }
 
  selectUser(){
-    // console.log(this.oneUser);
+    console.log(this.oneUser);
+    sessionStorage.setItem('selectedUserName', this.oneUser.name);
+    sessionStorage.setItem('selectedUserId', this.oneUser._id);
     /// calling dataService to send userId
   this.dataService.sendData(this.oneUser);
-  this.router.navigateByUrl("/chat");
+  // this.router.navigateByUrl("/chat");
  }
 }
