@@ -1,38 +1,32 @@
-.scroll{
+.chat-box-wrapper{
   width: 75vw;
   height: 80vh;
+}
+
+.scroll{
   overflow-y: auto;
   overflow-x: hidden;
-
 }
+
 *::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
 }
 
-*::-webkit-scrollbar-track {
-  background: #eee;
+::-webkit-scrollbar-track {
   border-radius: 50px;
-
-}
+} 
 
 *::-webkit-scrollbar-thumb {
-  background-color: rgb(202, 202, 202);
+  background-color: rgb(215, 215, 215);
   border-radius: 20px;
 }
 
-.chat-box-wrapper{
-    width: 75vw;
-    height: 80vh;
-    overflow-y: auto;
-    overflow-x: hidden;
-}
+
 
 @media only screen and (max-width:1000px) {
   .chat-box-wrapper{
     width: 95vw;
     height: 80vh;
-    overflow-y: auto;
-    overflow-x: hidden;
 }
 }
 
