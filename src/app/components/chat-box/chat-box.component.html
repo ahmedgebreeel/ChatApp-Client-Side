@@ -1,7 +1,5 @@
-
-
-<div class="scroll">
-  <div class=" bg-white ml-4 rounded-3xl flex flex-col justify-end over overflow-hidden p-4 relative">
+<div class="chat-box-wrapper bg-white ml-4 rounded-3xl flex flex-col justify-end overflow-hidden  pl-4 relative">
+    <div class="scroll  rounded-3xl p-4 overflow-hidden">
     @if (messages){
         @for (message of messages; track message._id) {
             <!-- <div>{{message.content}}</div> -->
