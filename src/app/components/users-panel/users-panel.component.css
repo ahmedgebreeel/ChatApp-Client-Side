@@ -16,9 +16,81 @@
   background-color: rgb(202, 202, 202);
   border-radius: 50px;
 }
+
+.search-input{
+  width: 96%;
+  
+}
+
+.search-wrapper{
+  width: 100%;
+}
+
 .users-list-panel{
-    height: 83%;
+    height: 88%;
+    width: 20vw;
     overflow-y: auto;
     overflow-x: hidden;
 }
 
+.user-info-panel{
+  width: 20vw;
+}
+
+@media only screen and (max-width:1000px) {
+.user-panel-wrapper{
+  transform: translateX(-100%);
+  visibility: hidden;
+  width: 80vh;
+  z-index: 5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.5s ease;
+}
+}
+
+.button-wrapper{
+  width: 100%;
+}
+
+.btn-zen{
+  width: 40%;
+}
+
+.hide-wrapper{
+  /* display: none; */
+transform: translateX(50px);
+opacity: 1;
+visibility: visible;
+}
+
+.hide-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  backdrop-filter: blur(10px);
+
+  background-color: rgba(255, 255, 255, 0.5);
+  z-index: 4;
+}
+
+@media only screen and (min-width:1000px) {
+.hide-overlay{
+  display: none;
+}
+  }
+
+  @media only screen and (min-width:1000px) {
+    .user-panel-wrapper{
+      visibility: hidden;
+      z-index: 5;
+      position: inline-block;
+      transition: all 0.5s ease;
+      opacity: 1;
+      visibility: visible;
+    }
+    }

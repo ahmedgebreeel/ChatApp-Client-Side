@@ -1,5 +1,7 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { DataService } from '../../service/data.service';
+import { VisibilityServiceService } from '../../visibility-service.service';
+
 
 @Component({
   selector: 'app-selected-user',
@@ -10,7 +12,7 @@ import { DataService } from '../../service/data.service';
 })
 export class SelectedUserComponent implements OnChanges{
   @Input() selectedUser: any;
-  constructor(private dataService: DataService){
+  constructor(private dataService: DataService, private Vs: VisibilityServiceService){
     if (sessionStorage.getItem('selectedUserName')){
       this.selectedUser = sessionStorage.getItem('selectedUserName');
       console.log(this.selectedUser);
@@ -35,6 +37,8 @@ export class SelectedUserComponent implements OnChanges{
    
 }
 
-
+zeno(){
+  this.Vs.toggleVisible()
+}
     
 }
