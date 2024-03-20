@@ -9,7 +9,7 @@ export const routes: Routes = [
     {path: '', redirectTo: 'login', pathMatch: 'full'},
     {path: 'login', component: LoginComponent},
     {path: 'register', component: SignupComponent},
-    {path: 'welcome', component: WelcomeComponent},
+    {path: 'welcome', component: ChatComponent},
     {path: 'chat', component: ChatComponent},
     {path: 'groups', component: GroupsComponent},
 ];

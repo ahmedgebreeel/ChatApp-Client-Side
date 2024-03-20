@@ -69,12 +69,12 @@ export class LoginComponent {
           console.log(data.body);
           localStorage.setItem('token', data.body.token);
           localStorage.setItem('username',data.body.userName)
-          this.router.navigate(['/welcome']);
+          this.router.navigate(['/chat']);
           this.toastr.success('You logged successfully');
         },
         error: (error) => {
-          console.error(error.message);
-          this.toastr.error(' Please try again later.','An error occurred');
+          console.log(error.error);
+          this.toastr.error(error.error.message);
           // this.toastr.error(error.message);
         },
       });
