@@ -15,14 +15,38 @@ import { DataService } from '../../service/data.service';
   styleUrl: './chat-box.component.css'
 })
 export class ChatBoxComponent implements OnInit {
-   userId = "";
+   userId : any;
    messages : any;
   @Output() myEvent = new EventEmitter();
  
   constructor(private messService : MessageService, private dataService: DataService){
-      
+    if (sessionStorage.getItem('selectedUserId')){
+      this.userId = sessionStorage.getItem('selectedUserId');
+      console.log(this.userId);
+    }
   }
   ngOnInit(){
+    if(this.userId){
+       ///calling getMessage service to get messages
+       this.messService.getMessages(this.userId).subscribe({
+        next: (data: any)=>{
+          console.log(data);
+          this.messages = data.message;
+          const chatId = data.chatId;
+          console.log(chatId);
+          this.myEvent.emit(chatId);
+          
+          // //calling dataService to send chatId to inputFiled Component
+          // this.dataService.sendAnotherData(chatId);
+
+        },
+        error: (err: any)=>{
+          console.log(err);
+          
+        }
+      })
+      
+    }
    ///calling dataService to get userId from one-user component
    this.dataService.data$.subscribe({
     next: (data)=>{
