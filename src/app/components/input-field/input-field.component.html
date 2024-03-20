@@ -1,7 +1,5 @@
 <div class="user-selected-panel ml-4 p-2 h-16 flex items-center justify-around rounded-3xl bg-white">
-    <i class="fa-regular fa-face-smile fa-lg cursor-pointer" style="color: #a1a1a1;"></i>
-    <i class="fa-solid fa-paperclip fa-lg cursor-pointer" style="color: #a8a8a8;"></i>
     <input #message (keyup.enter)="addMessage(message.value)" type="text" placeholder="Type a message" class="chat-input input w-full bg-white w-94" />
-    <button (click)="addMessage(message.value)" style="background-color: #64A5FF; " class="btn btn-info  text-neutral-100   btn-sm mr-5 ">send</button>
+    <button (click)="addMessage(message.value)" style="background-color: #64A5FF; " class="btn btn-info btn-sm w-16 h-10 text-neutral-100">send</button>
     <!-- <i (click)="addMessage(message.value)"  class="fa-solid fa-paper-plane fa-lg mr-2 cursor-pointer" style="color: #64A5FF;"></i> -->
 </div>

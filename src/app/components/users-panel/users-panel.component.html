@@ -1,7 +1,6 @@
-<div class="user-panel-wrapper h-screen w-90 flex gap-3 flex-col ml-4">
-
-
-    <div class="user-info-panel p-2 w-96 h-16 flex justify-between items-center rounded-3xl bg-white mt-4">
+<div class="overlay" [class.hide-overlay]="!isVisible"></div>
+<div [class.hide-wrapper]="!isVisible" class="user-panel-wrapper hide-wrapper h-screen flex gap-3 flex-col ml-4">
+    <div class="user-info-panel p-2 h-16 flex justify-between items-center rounded-3xl bg-white mt-4">
         <div class="user-info flex justify-center items-center gap-3 ml-4">
             <div class="user-img w-10 h-10 bg-neutral-300 rounded-md overflow-hidden">
                 <img src="assets/user-avatar.jpg">
@@ -16,10 +15,9 @@
         </div>
 
   </div>
-  <div class="users-list-panel w-96 bg-white rounded-3xl px-2">
-    <div class="search-panel w-96 flex ml-6 items-center gap-5 mt-4 mb-2">
-      <i class="fa-solid fa-bars fa-lg" style="color: #737373"></i>
-      <div class="search-input relative">
+  <div class="users-list-panel bg-white rounded-3xl px-2">
+    <div class="search-wrapper flex justify-center items-center">
+      <div class="search-input relative mt-3 ">
         <i
           class="fa-solid fa-magnifying-glass absolute ml-3 mt-2.5"
           style="color: #979ca5"
@@ -29,13 +27,14 @@
           [(ngModel)]="searchText"
           class="form-control"
           placeholder="Search"
-          class="input search-input rounded-3xl w-72 h-9 bg-neutral-200 max-w-xs pl-10"
+          class="input search-input rounded-3xl h-9 bg-neutral-200 pl-10"
         />
       </div>
     </div>
-    <div class="rounded-xl p-1 flex-row bg-slate-100 mt-3  text-black font-bold">
-      <button routerLink="/chat" routerLinkActive="router-link-active" class="ml-12 rounded-3xl  w-32 h-10 bg-[#94c1ff]">Chats</button>
-      <button routerLink="/groups" class="ml-4 bg-[#94c1ff] w-32 h-10 rounded-3xl">Groups</button>
+  
+    <div class="button-wrapper rounded-xl p-1 flex justify-center items-center mt-3 gap-2 text-black font-bold">
+      <button routerLink="/chat" routerLinkActive="router-link-active" class="btn-zen rounded-3xl h-10 bg-[#94c1ff]">Chats</button>
+      <button routerLink="/groups" class=" btn-zen  bg-[#94c1ff] h-10 rounded-3xl">Groups</button>
     </div>
     @if (users) {
       @for (user of users | searchfilter :searchText ; track user._id) {

@@ -20,3 +20,21 @@
   border-radius: 20px;
 }
 
+.chat-box-wrapper{
+    width: 75vw;
+    height: 80vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+@media only screen and (max-width:1000px) {
+  .chat-box-wrapper{
+    width: 95vw;
+    height: 80vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+}
+
+
+
