@@ -1,3 +1,10 @@
+.scroll{
+  width: 75vw;
+  height: 80vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+}
 *::-webkit-scrollbar {
   width: 10px;
 }
@@ -12,6 +19,7 @@
   background-color: rgb(202, 202, 202);
   border-radius: 20px;
 }
+
 .chat-box-wrapper{
     width: 75vw;
     height: 80vh;
@@ -27,3 +35,6 @@
     overflow-x: hidden;
 }
 }
+
+
+

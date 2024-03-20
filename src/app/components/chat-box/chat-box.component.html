@@ -1,11 +1,15 @@
-<div class="chat-box-wrapper bg-white ml-4 rounded-3xl flex flex-col justify-end over overflow-hidden p-4 relative">
-@if (messages.length > 0){
-    @for (message of messages; track message._id) {
-        <!-- <div>{{message.content}}</div> -->
-        <app-message  [messageToShow]="message" ></app-message>
-    }
-}@else {
-    <div>loading...</div>
-}
 
+
+<div class="scroll">
+  <div class="chat-box-wrapper bg-white ml-4 rounded-3xl flex flex-col justify-end over overflow-hidden p-4 relative">
+    @if (messages){
+        @for (message of messages; track message._id) {
+            <!-- <div>{{message.content}}</div> -->
+            <app-message  [messageToShow]="message" ></app-message>
+        }
+    }@else {
+        <div>loading...</div>
+
+    }
+  </div>
 </div>
