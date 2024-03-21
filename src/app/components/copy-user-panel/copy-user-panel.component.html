@@ -1,6 +1,6 @@
-<div class="overlay" [class.hide-overlay]="!isVisible"></div>
+
 <div [class.hide-wrapper]="!isVisible" class="user-panel-wrapper hide-wrapper h-screen flex gap-3 flex-col ml-4">
-    <div [class.hide-user-info]="!isVisible" class="user-info-panel p-2 h-16 flex justify-between items-center rounded-3xl bg-white mt-4">
+    <div class="user-info-panel p-2 h-16 flex justify-between items-center rounded-3xl bg-white mt-4">
         <div class="user-info flex justify-center items-center gap-3 ml-4">
             <div class="user-img w-10 h-10 bg-whiterounded-full overflow-hidden">
                 <img src="assets/user-avatar.jpg" class="object-fill">
@@ -11,11 +11,11 @@
         </div>
         <div class="setting-icon mr-4">
             <!-- <i class="fa-solid fa-gear" style="color: #737373;"></i> -->
-            <button (click)="logOut()" class="btn btn-xs text-red-300 glass hover:bg-gray-100 border-none">Log out</button>
+            <button (click)="logOut()" class="btn btn-xs text-red-300 bg-gray-200 hover:bg-gray-100 border-none">Log out</button>
         </div>
 
   </div>
-  <div [class.hide-user-info]="!isVisible" class="users-list-panel bg-white rounded-3xl px-2">
+  <div class="users-list-panel bg-white rounded-3xl px-2">
     <div class="search-wrapper flex justify-center items-center">
       <div class="search-input relative mt-3 ">
         <i
@@ -34,7 +34,7 @@
   
     <div class="button-wrapper rounded-xl p-1 flex justify-center items-center mt-3 gap-2 text-black font-bold">
       <button routerLink="/chat" routerLinkActive="router-link-active" class="btn-zen btn btn-outline h-10">Chats</button>
-      <button routerLink="/groups" class=" btn-zen  btn btn-outline h-10 ">Groups</button>
+      <button routerLink="/groups" class=" btn-zen h-10 btn btn-outline">Groups</button>
     </div>
     @if (users) {
       @for (user of users | searchfilter :searchText ; track user._id) {

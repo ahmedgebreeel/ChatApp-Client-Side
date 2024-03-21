@@ -58,11 +58,19 @@
   width: 40%;
 }
 
+.btn-zen:hover{
+  background-color: #64A5FF;
+}
+
 .hide-wrapper{
   /* display: none; */
 transform: translateX(50px);
 opacity: 1;
 visibility: visible;
+}
+
+.hide-user-info{
+  width: 60vw;
 }
 
 .hide-overlay {

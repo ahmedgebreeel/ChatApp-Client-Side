@@ -20,6 +20,6 @@ export class OneUserComponent {
     sessionStorage.setItem('selectedUserId', this.oneUser._id);
     /// calling dataService to send userId
   this.dataService.sendData(this.oneUser);
-  // this.router.navigateByUrl("/chat");
+  this.router.navigateByUrl("/chat");
  }
 }
