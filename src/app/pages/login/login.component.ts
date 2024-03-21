@@ -69,7 +69,7 @@ export class LoginComponent {
           console.log(data.body);
           localStorage.setItem('token', data.body.token);
           localStorage.setItem('username',data.body.userName)
-          this.router.navigate(['/chat']);
+          this.router.navigate(['/welcome']);
           this.toastr.success('You logged successfully');
         },
         error: (error) => {
