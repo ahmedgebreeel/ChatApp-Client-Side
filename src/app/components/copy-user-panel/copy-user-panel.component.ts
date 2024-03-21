@@ -25,11 +25,16 @@ export class CopyUsersPanelComponent implements OnInit {
 
   constructor(private Uservice: UsersService, private router: Router, private Vs: VisibilityServiceService) {
 
+
+    console.log("ay 7aga");
+    
     this.subscription = this.Vs.visible$.subscribe(state => {
       this.isVisible = state;
     });
   }
   ngOnInit() {
+    console.log("on init");
+    
     this.loggedUsername = localStorage.getItem('username');
     this.Uservice.getUsers().subscribe({
       next: (data) => {

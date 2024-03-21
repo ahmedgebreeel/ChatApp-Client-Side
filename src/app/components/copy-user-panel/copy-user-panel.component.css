@@ -45,6 +45,9 @@
 .btn-zen{
   width: 40%;
 }
+.btn-zen:hover{
+  background-color: #64A5FF;
+}
 
 
   @media only screen and (max-width:1000px) {
