@@ -65,6 +65,10 @@ opacity: 1;
 visibility: visible;
 }
 
+.hide-user-info{
+  width: 60vw;
+}
+
 .hide-overlay {
   position: fixed;
   top: 0;

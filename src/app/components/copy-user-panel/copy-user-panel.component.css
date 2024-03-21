@@ -1,0 +1,57 @@
+.user-panel-wrapper{
+    /* border: 1px solid greenyellow; */
+}
+.search-panel{
+    /* border: 1px solid greenyellow; */
+}
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #eee;
+  border-radius: 50px;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: rgb(202, 202, 202);
+  border-radius: 50px;
+}
+
+.search-input{
+  width: 96%;
+  
+}
+
+.search-wrapper{
+  width: 100%;
+}
+
+.users-list-panel{
+    height: 88%;
+    width: 20vw;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.user-info-panel{
+  width: 20vw;
+}
+
+
+.button-wrapper{
+  width: 100%;
+}
+
+.btn-zen{
+  width: 40%;
+}
+
+
+  @media only screen and (max-width:1000px) {
+    .user-info-panel{
+     width:95vw;
+    }
+    .users-list-panel{
+        width: 95vw;
+    }
+    }
