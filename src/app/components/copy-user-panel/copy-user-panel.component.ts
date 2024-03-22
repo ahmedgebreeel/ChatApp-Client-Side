@@ -26,7 +26,7 @@ export class CopyUsersPanelComponent implements OnInit {
   constructor(private Uservice: UsersService, private router: Router, private Vs: VisibilityServiceService) {
 
 
-    console.log("ay 7aga");
+    // console.log("ay 7aga");
     
     this.subscription = this.Vs.visible$.subscribe(state => {
       this.isVisible = state;

@@ -1,6 +1,6 @@
 
 import { MessageComponent } from '../message/message.component';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { MessageService } from '../../service/message.service';
 import { HttpClientModule } from '@angular/common/http';
 import { DataService } from '../../service/data.service';
@@ -18,6 +18,7 @@ export class ChatBoxComponent implements OnInit {
    userId : any;
    messages : any;
   @Output() myEvent = new EventEmitter();
+  @ViewChild('scrollContainer') scrollContainer!: ElementRef;
  
   constructor(private messService : MessageService, private dataService: DataService){
     if (sessionStorage.getItem('selectedUserId')){
@@ -26,25 +27,39 @@ export class ChatBoxComponent implements OnInit {
     }
   }
   ngOnInit(){
-    if(this.userId){
-       ///calling getMessage service to get messages
-       this.messService.getMessages(this.userId).subscribe({
-        next: (data: any)=>{
-          console.log(data);
-          this.messages = data.message;
-          const chatId = data.chatId;
-          console.log(chatId);
-          this.myEvent.emit(chatId);
-          
-          // //calling dataService to send chatId to inputFiled Component
-          // this.dataService.sendAnotherData(chatId);
 
-        },
-        error: (err: any)=>{
-          console.log(err);
+    setInterval(() =>{
+      if (this.scrollContainer) {
+        this.scrollContainer.nativeElement.scrollTop = this.scrollContainer.nativeElement.scrollHeight;
+      }
+    },100);
+   
+    if(this.userId){
+      setInterval(() => {
+        // console.log("Interval");
+        
+        this.messService.getMessages(this.userId).subscribe({
+         next: (data: any)=>{
+           console.log(data);
+           this.messages = data.message;
+           const chatId = data.chatId;
+           console.log(chatId);
+           this.myEvent.emit(chatId);
+
           
-        }
-      })
+           
+           // //calling dataService to send chatId to inputFiled Component
+           // this.dataService.sendAnotherData(chatId);
+  
+         },
+         error: (err: any)=>{
+           console.log(err);
+           
+         }
+       })
+
+      }, 1000);
+       ///calling getMessage service to get messages
       
     }
    ///calling dataService to get userId from one-user component
@@ -62,6 +77,8 @@ export class ChatBoxComponent implements OnInit {
           const chatId = data.chatId;
           console.log(chatId);
           this.myEvent.emit(chatId);
+
+          
           
           // //calling dataService to send chatId to inputFiled Component
           // this.dataService.sendAnotherData(chatId);
@@ -78,6 +95,5 @@ export class ChatBoxComponent implements OnInit {
     }
   })
   }
- 
 
 }

@@ -61,13 +61,18 @@ export class LoginComponent {
     return this.loginValidation.controls['password'].valid;
   }
 
-  Add(email: any, password: any) {
+  Add(email: any, password: any, checked:any) {
     if (this.loginValidation.valid) {
+      
 
       this.LService.login(email, password).subscribe({
         next: (data) => {
           console.log(data.body);
-          localStorage.setItem('token', data.body.token);
+          if(checked){
+            localStorage.setItem('token', data.body.token);
+          }else{
+            sessionStorage.setItem('token', data.body.token);
+          }
           localStorage.setItem('username',data.body.userName)
           this.router.navigate(['/welcome']);
           this.toastr.success('You logged successfully');
@@ -75,7 +80,7 @@ export class LoginComponent {
         error: (error) => {
           console.log(error.error);
           this.toastr.error(error.error.message);
-          // this.toastr.error(error.message);
+         
         },
       });
 
