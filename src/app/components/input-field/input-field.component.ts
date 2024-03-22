@@ -32,7 +32,8 @@ export class InputFieldComponent implements OnInit{
       next: (data)=>{
         console.log(data);
         // Refresh the page after sending the message
-        window.location.reload();
+        // window.location.reload();
+        message = "";
       },
       error: (err)=>{console.log(err); }
     })

@@ -15,12 +15,14 @@ import {
 } from '@angular/forms';
 import { signupServices } from '../../service/signup.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-signup',
   standalone: true,
   imports: [
-    FormsModule,
+  
+  FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     CommonModule,
@@ -31,7 +33,7 @@ import { HttpClientModule } from '@angular/common/http';
   styleUrl: './signup.component.css',
 })
 export class SignupComponent {
-  constructor(private signupService: signupServices, private router: Router) {}
+  constructor(private signupService: signupServices, private router: Router, private toastr: ToastrService) {}
   // #region for signup form
   regValidation = new FormGroup({
     name: new FormControl('salma', [
@@ -74,10 +76,14 @@ export class SignupComponent {
          localStorage.setItem('token', data.body.token)
          localStorage.setItem('username',data.body.userName)
           this.router.navigate(['/chat']);
+          this.toastr.success('You logged successfully');
+
        },
       
          (error) => {
            console.error('Signup failed:', error);
+          this.toastr.error(error.error.message);
+
       }
     );
   }

@@ -12,7 +12,7 @@
           <h2 class="text-xl font-bold text-black lg:mt-20 lg:mb-8 md:mt-12 md:mb-5 sm:mt-12 sm:mb-5" >Log In</h2>
         </div>
 
-        <form (submit)="Add(email.value, password.value)" class="form mx-6" [formGroup]="loginValidation">
+        <form (submit)="Add(email.value, password.value, checked.checked)" class="form mx-6" [formGroup]="loginValidation">
           <div  class="form-group mx-5 mt-2">
             <input
               #email
@@ -52,7 +52,7 @@
             <span class="ml-5 text-red-500 ">At least 8 characters</span>
           }
           <div class="mx-5 mt-3 ">
-            <input type="checkbox" id="remember" name="remember" value="remember" class="mr-2 ">
+            <input #checked type="checkbox" id="remember" name="remember" class="mr-2 ">
             <label for="remember">Remember me</label>
           </div>
           <div class="mx-5 mt-5 form-group">
