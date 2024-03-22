@@ -8,7 +8,9 @@ import { Observable } from 'rxjs';
 export class LoginService {
   constructor(private http: HttpClient) {}
 
-  private url = 'http://localhost:8000/user/login';
+  // private url = 'http://localhost:8000/user/login';
+  private url = 'https://chatapp-server-side.onrender.com/user/login';
+
 
   login(email: string, password: string): Observable<HttpResponse<any>> {
     return this.http.post(
