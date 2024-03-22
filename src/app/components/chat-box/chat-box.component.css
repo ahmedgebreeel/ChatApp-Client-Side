@@ -1,6 +1,6 @@
 .chat-box-wrapper{
   width: 75vw;
-  height: 80vh;
+  height: 77vh;
 }
 
 .scroll{
@@ -25,7 +25,7 @@
 @media only screen and (max-width:1000px) {
   .chat-box-wrapper{
     width: 95vw;
-    height: 80vh;
+    height: 77vh;
 }
 }
 
