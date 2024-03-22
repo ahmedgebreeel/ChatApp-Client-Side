@@ -28,11 +28,11 @@ export class ChatBoxComponent implements OnInit {
   }
   ngOnInit(){
 
-    setInterval(() =>{
+    
       if (this.scrollContainer) {
         this.scrollContainer.nativeElement.scrollTop = this.scrollContainer.nativeElement.scrollHeight;
       }
-    },100);
+    
    
     if(this.userId){
       setInterval(() => {
