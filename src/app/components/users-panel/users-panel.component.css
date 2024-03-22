@@ -5,11 +5,11 @@
     /* border: 1px solid greenyellow; */
 }
 *::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
 }
 
 *::-webkit-scrollbar-track {
-  background: #eee;
+  background: #d7d7d7;
   border-radius: 50px;
 }
 *::-webkit-scrollbar-thumb {
@@ -27,7 +27,7 @@
 }
 
 .users-list-panel{
-    height: 88%;
+    height: 85%;
     width: 20vw;
     overflow-y: auto;
     overflow-x: hidden;
