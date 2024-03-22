@@ -1,5 +1,5 @@
 <div class="user-selected-panel ml-4 p-2 h-16 flex items-center justify-around rounded-3xl bg-white">
-    <input #message (keyup.enter)="addMessage(message.value)" type="text" placeholder="Type a message" class="chat-input input w-full bg-white w-94" />
-    <button (click)="addMessage(message.value)" style="background-color: #64A5FF; " class="btn btn-info btn-sm w-16 h-10 text-neutral-100">send</button>
+    <input [(ngModel)]="message" (keyup.enter)="addMessage()" type="text" placeholder="Type a message" class="chat-input input w-full bg-white w-94" />
+    <button (click)="addMessage()" style="background-color: #64A5FF; " class="btn btn-info btn-sm w-16 h-10 text-neutral-100">send</button>
     <!-- <i (click)="addMessage(message.value)"  class="fa-solid fa-paper-plane fa-lg mr-2 cursor-pointer" style="color: #64A5FF;"></i> -->
 </div>

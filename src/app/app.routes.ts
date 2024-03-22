@@ -7,7 +7,7 @@ import { GroupsComponent } from './components/groups/groups.component';
 import { authGuard } from './auth.guard';
 
 export const routes: Routes = [
-    {path: '', redirectTo: 'chat', pathMatch: 'full'},
+    {path: '', redirectTo: 'welcome', pathMatch: 'full'},
     {path: 'login', component: LoginComponent},
     {path: 'register', component: SignupComponent},
 

@@ -2,17 +2,19 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MessageService } from '../../service/message.service';
 import { HttpClientModule } from '@angular/common/http';
 import { DataService } from '../../service/data.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-input-field',
   standalone: true,
-  imports: [HttpClientModule],
+  imports: [HttpClientModule, FormsModule],
   providers:[MessageService, DataService],
   templateUrl: './input-field.component.html',
   styleUrl: './input-field.component.css'
 })
 export class InputFieldComponent implements OnInit{
  @Input() currentChId:any;
+ message: string = ''; // Variable to store the input field value
   constructor(private messService : MessageService, private dataService: DataService){
    
   }
@@ -25,15 +27,15 @@ export class InputFieldComponent implements OnInit{
     // })
    
   }
-  addMessage(message:any){
-    console.log(message);
+  addMessage() {
+    console.log(this.message);
     console.log(this.currentChId);
-    this.messService.sendMessage(message,this.currentChId).subscribe({
-      next: (data)=>{
+    this.messService.sendMessage(this.message, this.currentChId).subscribe({
+      next: (data) => {
         console.log(data);
         // Refresh the page after sending the message
         // window.location.reload();
-        message = "";
+        this.message = '';
       },
       error: (err)=>{console.log(err); }
     })
