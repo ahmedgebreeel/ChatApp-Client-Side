@@ -107,79 +107,67 @@
 
         <p class="ml-4 md:ml-0 mt-5 mb-5 text-center" id="or">- OR -</p>
 
-        <form
-          class="form"
-          #form="ngForm"
-          (ngSubmit)="signup(name.value, email.value, password.value)"
-        >
-          <input
-            ngModel
-            name="name"
-            #name="ngModel"
-            type="text"
-            class="form-control underline-textarea focus:outline-none mb-4 ml-5"
-            placeholder="Full Name"
-            required
-          />
-          <div *ngIf="name.errors && (name.dirty || name.touched)">
-            <div *ngIf="name.errors['required']">
-              <p class="error-message ml-6">Name is required</p>
-            </div>
+        <form (submit)="Add(name.value,email.value, password.value)" class="form mx-6" [formGroup]="signupValidation">
 
-            <div *ngIf="name.errors['minlength']">
-              <p class="error-message">
-                Name must be at least 3 characters long
-              </p>
-            </div>
+          <div  class="form-group mx-5 mt-2">
+            <input
+              #name
+              formControlName="name"
+              type="text"
+              name="name"
+              placeholder="Name"
+              class="form-control bg-white text-black focus focus:outline-none border-b-2 w-full h-10"
+            />
           </div>
-
-          <input
-            ngModel
-            name="email"
-            #email="ngModel"
-            type="email"
-            class="form-control focus:outline-none underline-textarea mb-4 ml-5"
-            placeholder="Email Address"
-            required
-            email
-          />
-          <div *ngIf="email.errors && (email.dirty || email.touched)">
-            <div *ngIf="email.errors['required']">
-              <p class="error-message ml-6">Email is required</p>
-            </div>
-            <div *ngIf="email.errors['email']">
-              <p class="error-message ml-6">Invalid email format</p>
-            </div>
+          @if(name.value && !NameValid){
+            <span class="ml-5 text-red-500 " >name Required</span>
+          }
+          <div  class="form-group mx-5 mt-2">
+            <input
+              #email
+              formControlName="email"
+              type="email"
+              name="email"
+              placeholder="Email"
+              class="form-control bg-white text-black focus focus:outline-none border-b-2 w-full h-10"
+            />
           </div>
-
-          <input
-            ngModel
-            name="password"
-            #password="ngModel"
-            type="password"
-            class="form-control underline-textarea ml-5"
-            placeholder="Password"
-            required
-            minlength="5"
-          />
-          <div *ngIf="password.errors && (password.dirty || password.touched)">
-            <div *ngIf="password.errors['required']">
-              <p class="error-message ml-6">Password is required</p>
-            </div>
-            <div *ngIf="password.errors['minlength']">
-              <p class="error-message ml-4">
-                Password must be at least 8 characters long
-              </p>
-            </div>
+          @if(email.value && !EmailValid){
+            <span class="ml-5 text-red-500 " >Email Required</span>
+          }
+          <div class="form-group mx-5 mt-5 flex content-center">
+            <input
+              #password
+              formControlName="password"
+              type="password"
+              name="email"
+              placeholder="Password"
+              class="form-control bg-white text-black focus:outline-none border-b-2 w-full h-10"
+              [type]="changeType ? 'Password' : 'text'"
+            /><span
+            class="img fw-bold text-muted"
+            (click)="showPassword()"
+            ><i
+              class="relative right-3 top-3"
+              [ngClass]="
+                visible
+                  ? 'fa-solid fa-eye-slash'
+                  : 'fa-solid fa-eye'
+              "
+            ></i
+          ></span>
           </div>
+          @if(password.value && !PassValid){
+            <span class="ml-5 text-red-500 ">At least 8 characters</span>
+          }
+          <div class="mx-5 mt-3 ">
+            <input type="checkbox" id="remember" name="remember" value="remember" class="mr-2 ">
+            <label for="remember">Remember me</label>
+          </div>
+          <div class="mx-5 mt-5 form-group">
+            <input  class=" bg-[#64A5FF] rounded text-xl font-bold text-white h-10 w-full transition ease-out-in delay-100 hover:-translate-y-1 hover:scale-103 hover:duration-100 ..." value="Sign Up" type="submit">
 
-          <button
-            type="submit"
-            class="btn mt-11 font-alef w-full bg-blue-500 text-white mb-4 border-none"
-            id="btns"
-          >
-            Create Account
-          </button>
+          </div>
         </form>
 
         <div class="box text-center">

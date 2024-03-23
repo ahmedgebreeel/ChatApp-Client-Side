@@ -1,90 +1,96 @@
-import { Component, OnInit } from '@angular/core';
+import { CommonModule, NgClass } from '@angular/common';
+import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import {
-  AbstractControl,
-  FormBuilder,
-  FormGroupDirective,
-} from '@angular/forms';
-import { CommonModule } from '@angular/common';
 import {
   FormControl,
   FormGroup,
-  FormsModule,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { signupServices } from '../../service/signup.service';
+
 import { HttpClientModule } from '@angular/common/http';
+
 import { ToastrService } from 'ngx-toastr';
+import { signupServices } from '../../service/signup.service';
 
 @Component({
-  selector: 'app-signup',
+  selector: 'app-login',
   standalone: true,
+
   imports: [
-  
-  FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    CommonModule,
     RouterModule,
+    ReactiveFormsModule,
+    NgClass,
+    CommonModule,
+    HttpClientModule,
   ],
   providers: [signupServices],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css',
 })
 export class SignupComponent {
-  constructor(private signupService: signupServices, private router: Router, private toastr: ToastrService) {}
-  // #region for signup form
-  regValidation = new FormGroup({
-    name: new FormControl('salma', [
-      Validators.required,
-      Validators.minLength(3),
-    ]),
-    email: new FormControl('salma@gmail.com', [
-      Validators.required,
-      Validators.email,
-    ]),
+  changeType: boolean = true;
+  visible: boolean = true;
+password: any;
+email: any;
+
+  constructor(
+    private  signupServices:signupServices,
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
+
+  
+  showPassword() {
+    this.changeType = !this.changeType;
+    this.visible = !this.visible;
+  }
+
+  // #region for  signupValidation
+  signupValidation = new FormGroup({
+    name: new FormControl('',[Validators.required,Validators.minLength(2)]),
+    email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [
       Validators.required,
       Validators.minLength(8),
     ]),
   });
 
-  get nameValid() {
-    return this.regValidation.controls['name'].valid;
-  }
-  get emailValid() {
-    return this.regValidation.controls['email'].valid;
-  }
-  get passwordValid() {
-    return this.regValidation.controls['password'].valid;
+  get NameValid(){
+    return this.signupValidation.controls['name'].valid;
   }
 
-  Add() {
-    console.log(this.regValidation);
+  get EmailValid() {
+    return this.signupValidation.controls['email'].valid;
   }
 
-  // #endregion
+  get PassValid() {
+    return this.signupValidation.controls['password'].valid;
+  }
 
-  signup(name: any, email: any, password: any): void {
-    
-    // console.log(name,email,password);
+  Add(name :any , email: any, password: any) {
+    if (this.signupValidation.valid) {
 
-    this.signupService.signup(name, email, password).subscribe(
-      (data) => {
-         console.log('Signup successful:', data.body);
-         localStorage.setItem('token', data.body.token)
-         localStorage.setItem('username',data.body.userName)
+      this.signupServices.signup(name,email, password).subscribe({
+        next: (data) => {
+          console.log(data.body);
+          localStorage.setItem('token', data.body.token);
+          localStorage.setItem('username',data.body.userName)
           this.router.navigate(['/chat']);
-          this.toastr.success('You logged successfully');
-
-       },
-      
-         (error) => {
-           console.error('Signup failed:', error);
+          this.toastr.success(' signup successfully');
+        },
+        error: (error) => {
+          console.log(error.error);
           this.toastr.error(error.error.message);
+          // this.toastr.error(error.message);
+        },
+      });
 
-      }
-    );
+    } 
+    else {
+      this.toastr.error('Your name, email or password is wrong');
+      
+    }
+
   }
 }
